@@ -11,4 +11,7 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
