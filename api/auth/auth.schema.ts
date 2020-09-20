@@ -34,14 +34,13 @@ export interface googleProfile {
 
 export const userCredsSchema = yup
   .object({
-    required: yup
-      .object({
-        email: yup.string().email().required(),
-        name: yup.string().required(),
-      })
-      .required(),
-    picture: yup.string(),
+    email: yup.string().email().required(),
+    name: yup.string().required(),
   })
   .required();
 
 export type userCreds = yup.InferType<typeof userCredsSchema>;
+
+export interface userIdentity extends userCreds {
+  picture: string;
+}

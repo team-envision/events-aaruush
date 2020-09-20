@@ -45,8 +45,8 @@ async function handlePostAuthVerify(
       success: true,
       authToken: jwtToken,
       profile: {
-        name: profile.required.name,
-        email: profile.required.email,
+        name: profile.name,
+        email: profile.email,
         picture: profile.picture,
       },
     });

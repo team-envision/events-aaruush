@@ -1,7 +1,11 @@
 import { google } from "googleapis";
 import axios from "axios";
 import { errors } from "../error/error.constant";
-import { oauthGoogleResponse, googleProfile, userCreds } from "./auth.schema";
+import {
+  oauthGoogleResponse,
+  googleProfile,
+  userIdentity,
+} from "./auth.schema";
 import { sign as jwtSign } from "jsonwebtoken";
 
 export const generateAuthUrl = async (): Promise<string> => {
@@ -47,7 +51,7 @@ export const exchangeAuthCode = async (authCode: string): Promise<string> => {
 
 export const getUserGoogleProfile = async (
   accessToken: string
-): Promise<userCreds> => {
+): Promise<userIdentity> => {
   try {
     const { data: userProfile } = await axios.get<googleProfile>(
       "https://www.googleapis.com/oauth2/v2/userinfo",
@@ -58,10 +62,8 @@ export const getUserGoogleProfile = async (
       }
     );
     return {
-      required: {
-        email: userProfile.email,
-        name: userProfile.name,
-      },
+      email: userProfile.email,
+      name: userProfile.name,
       picture: userProfile.picture,
     };
   } catch (err) {
@@ -73,10 +75,14 @@ export const getUserGoogleProfile = async (
   }
 };
 
-export const generateJwt = async (user: userCreds): Promise<string> => {
-  const jwt = jwtSign(user.required, process.env.JWT_SECRET!, {
-    issuer: "aaruush.org",
-    expiresIn: "1d",
-  });
+export const generateJwt = async (user: userIdentity): Promise<string> => {
+  const jwt = jwtSign(
+    { email: user.email, name: user.name },
+    process.env.JWT_SECRET!,
+    {
+      issuer: "aaruush.org",
+      expiresIn: "1d",
+    }
+  );
   return jwt;
 };
