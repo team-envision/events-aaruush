@@ -58,8 +58,11 @@ export const getUserGoogleProfile = async (
       }
     );
     return {
-      email: userProfile.email,
-      name: userProfile.name,
+      required: {
+        email: userProfile.email,
+        name: userProfile.name,
+      },
+      picture: userProfile.picture,
     };
   } catch (err) {
     if (!err.response) {
@@ -71,7 +74,7 @@ export const getUserGoogleProfile = async (
 };
 
 export const generateJwt = async (user: userCreds): Promise<string> => {
-  const jwt = jwtSign(user, process.env.JWT_SECRET!, {
+  const jwt = jwtSign(user.required, process.env.JWT_SECRET!, {
     issuer: "aaruush.org",
     expiresIn: "1d",
   });

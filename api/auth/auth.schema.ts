@@ -34,8 +34,13 @@ export interface googleProfile {
 
 export const userCredsSchema = yup
   .object({
-    email: yup.string().email().required(),
-    name: yup.string().required(),
+    required: yup
+      .object({
+        email: yup.string().email().required(),
+        name: yup.string().required(),
+      })
+      .required(),
+    picture: yup.string(),
   })
   .required();
 
