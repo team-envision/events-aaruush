@@ -18,10 +18,9 @@ export class DatabaseService {
       await this.dbClient.connect();
       LoggerService.getInstance().log.info("Connected to MongoDB");
     } catch (err) {
-      LoggerService.getInstance().log.fatal(
-        "Could not connect to MongoDB\n%o",
-        err
-      );
+      LoggerService.getInstance()
+        .log.child({ error: err })
+        .fatal("Could not connect to MongoDB");
       throw errors.MONGODB_CONNECT_ERROR;
     }
   };

@@ -16,10 +16,9 @@ export class StorageService {
       await this.s3.headBucket({ Bucket: process.env.AWS_S3BUCKET! }).promise();
       LoggerService.getInstance().log.info("Connected to Amazon S3");
     } catch (err) {
-      LoggerService.getInstance().log.fatal(
-        "Could not connect to Amazon S3\n%o",
-        err
-      );
+      LoggerService.getInstance()
+        .log.child({ error: err })
+        .fatal("Could not connect to Amazon S3");
       throw errors.AMAZONS3_CONNECT_ERROR;
     }
   };
