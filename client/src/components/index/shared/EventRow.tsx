@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./EventRow.scss";
-import { EventTile, EventShot } from "..";
-import EventJumbotron from "../EventJumbotron/EventJumbotron";
+import EventTile from "./EventTile/EventTile";
+import EventShot from "./EventShot/EventShot";
+import EventJumbotron from "./EventJumbotron/EventJumbotron";
 
 export enum Layout {
   tile = "tile",

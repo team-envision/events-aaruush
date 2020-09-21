@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
-import { Home } from "./modules";
+import Home from "./components/index/Hero";
 import { Constants } from "./constants";
 import { Navbar } from "./shared/components";
 

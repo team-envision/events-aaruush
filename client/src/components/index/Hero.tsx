@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { FaMagic, FaInfoCircle } from "react-icons/fa";
+
 import "./Home.scss";
 import { Navbar, Button } from "../../shared/components";
-import { FaMagic, FaInfoCircle } from "react-icons/fa";
-import { EventRow } from "./components";
+import EventRow from "./shared/EventRow";
+import { Layout } from "./shared/EventRow";
 import { ButtonTheme } from "../../shared/components/Button/Button";
-import { Layout } from "./components/EventRow/EventRow";
 
 const Home = () => {
   const items = [

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./EventShot.scss";
-import { EventProps } from "../EventRow/EventRow";
+import { EventProps } from "../EventRow";
 import { Button } from "../../../../shared/components";
 import { FaMagic, FaInfoCircle } from "react-icons/fa";
 import { ButtonTheme } from "../../../../shared/components/Button/Button";
