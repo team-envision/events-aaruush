@@ -7,6 +7,9 @@ import httpLogger from "pino-http";
 
 import { errorHandler } from "./error/error.handler";
 import authRoutes from "./auth/auth.routes";
+import { DatabaseService } from "./services/database.service";
+import { LoggerService } from "./services/logger.service";
+import { StorageService } from "./services/storage.service";
 
 dotenvConfig();
 const app: Express = express();
@@ -44,6 +47,17 @@ app.use((req: Request, res: Response) => {
   });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Listening For Awesome Stuff on Port ${process.env.PORT}`);
-});
+Promise.all([
+  DatabaseService.getInstance().initalize(),
+  StorageService.getInstance().initialize(),
+])
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      LoggerService.getInstance().log.info(
+        `Listening For Awesome Stuff on Port ${process.env.PORT}`
+      );
+    });
+  })
+  .catch((_) => {
+    process.exit(1);
+  });
