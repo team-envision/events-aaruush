@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import { LoggerService } from "../services/logger.service";
 
 interface ApiError {
   message: string;
@@ -20,7 +21,7 @@ export const errorHandler = (
   if (req.log) {
     req.log.error(err);
   } else {
-    console.error(err);
+    LoggerService.getInstance().log.error(err);
   }
   res.status(500).json({
     success: false,
