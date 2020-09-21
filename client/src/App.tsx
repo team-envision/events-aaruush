@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import "./App.scss";
-import Home from "./components/index/Hero";
+import Home from "./components/Index/Hero";
 import { Constants } from "./constants";
-import { Navbar } from "./shared/components";
 
 function App() {
   const [isOrg, setIsOrg] = useState(false);
@@ -18,7 +17,9 @@ function App() {
   const AdminRoutes = () => {
     return (
       <Switch>
-        <Route path="/" exact component={Navbar} />
+        <Route path="/" exact>
+          hi, this is the admin route
+        </Route>
       </Switch>
     );
   };

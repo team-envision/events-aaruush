@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import "./index.scss";
 import "./tailwind.scss";
-import { Navbar } from "./shared/components";
+import Navbar  from "./components/Shared/Navbar/Navbar";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 

@@ -1,9 +1,9 @@
 import React from "react";
 import "./EventShot.scss";
 import { EventProps } from "../EventRow";
-import { Button } from "../../../../shared/components";
+import Button from "../../../Shared/Button/Button";
 import { FaMagic, FaInfoCircle } from "react-icons/fa";
-import { ButtonTheme } from "../../../../shared/components/Button/Button";
+import { ButtonTheme } from "../../../Shared/Button/Button";
 
 const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
   return (

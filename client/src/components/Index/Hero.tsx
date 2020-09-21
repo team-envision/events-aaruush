@@ -1,11 +1,10 @@
 import React from "react";
 import { FaMagic, FaInfoCircle } from "react-icons/fa";
 
-import "./Home.scss";
-import { Navbar, Button } from "../../shared/components";
+import Button from "../Shared/Button/Button";
 import EventRow from "./shared/EventRow";
 import { Layout } from "./shared/EventRow";
-import { ButtonTheme } from "../../shared/components/Button/Button";
+import { ButtonTheme } from "../Shared/Button/Button";
 
 const Home = () => {
   const items = [
@@ -67,18 +66,18 @@ const Home = () => {
   ];
 
   return (
-    <div className="ev-home">
-      <div className="hero">
-        <Navbar />
-        <video className="videoTag" autoPlay loop muted>
+    <div className="flex flex-wrap w-full mx-auto">
+      {/* h=90vh */}
+      <div className="relative">
+        <video autoPlay loop muted>
           <source
             src="https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1920_18MG.mp4"
             type="video/mp4"
           />
         </video>
-        <div className="content">
-          <h2>Qui ullamco labore enim consequat.</h2>
-          <p>
+        <div className="absolute w-2/5 bottom-0">
+          <h2 className="text-4xl">Qui ullamco labore enim consequat.</h2>
+          <p className="text-lg">
             Ipsum incididunt elit nisi sunt anim esse proident voluptate laborum
             eu in dolor nostrud ullamco. Est excepteur culpa Lorem et. Excepteur
             do consequat ad quis consectetur esse proident. Ex dolore ex ad
