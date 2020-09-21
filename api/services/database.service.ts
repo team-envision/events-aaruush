@@ -31,4 +31,17 @@ export class DatabaseService {
     }
     return DatabaseService.instance;
   };
+
+  /**
+   * Returns the Collection Instance of the given database
+   * @param {string} db The Database Name
+   * @param {string} collection The Collection Name
+   * @returns {MongoDB.Collection} The instance
+   */
+  public getDb = async (
+    db: string,
+    collection: string
+  ): Promise<MongoDB.Collection> => {
+    return this.dbClient.db(db).collection(collection);
+  };
 }
