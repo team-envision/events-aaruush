@@ -1,4 +1,6 @@
 import * as Jimp from "jimp";
+import * as QRCode from "qrcode";
+import dataURIToBuffer from "data-uri-to-buffer";
 
 import { DatabaseService } from "../services/database.service";
 import { errors } from "../error/error.constant";
@@ -73,8 +75,13 @@ const genCert = async (
   certImg: Buffer,
   userReg: registrationSchema
 ): Promise<Buffer> => {
+  const userParams = Object.keys(userReg);
+  console.log(userParams);
   let image = await Jimp.read(certImg);
   const promises = certParams.certificate.objects.map(async (field) => {
+    if (!userParams.includes(field.type)) {
+      return;
+    }
     const font = await Jimp.loadFont(
       getFont(field.fontSize, certParams.certificate.fontColor)
     );
@@ -83,7 +90,7 @@ const genCert = async (
         case "name":
           return userReg.name;
           break;
-        case "position":
+        case "winner":
           return userReg.winner?.position;
           break;
         case "theme":
@@ -105,6 +112,21 @@ const genCert = async (
     );
   });
   await Promise.all(promises);
+  if (certParams.certificate.qr && certParams.certificate.qr.enabled) {
+    const qr = await Jimp.read(
+      await getQR(
+        userReg,
+        certParams.certificate.qr.darkHex,
+        certParams.certificate.qr.lightHex,
+        certParams.certificate.qr.size
+      )
+    );
+    await image.composite(
+      qr,
+      certParams.certificate.qr.x,
+      certParams.certificate.qr.y
+    );
+  }
   return image.quality(100).getBufferAsync(Jimp.MIME_JPEG);
 };
 
@@ -140,4 +162,22 @@ const getFont = (size: 8 | 16 | 32 | 64 | 128, color: "WHITE" | "BLACK") => {
         return Jimp.FONT_SANS_64_BLACK;
     }
   }
+};
+
+const getQR = async (
+  userReg: registrationSchema,
+  darkHex: string = "#000000FF",
+  lightHex: string = "#FFFFFFFF",
+  size: number = 400
+): Promise<Buffer> => {
+  const url = `${process.env.API_HOSTNAME}/api/v1/verify?registrantId=${userReg.registrantId}`;
+  const dataURI = await QRCode.toDataURL(url, {
+    width: size,
+    margin: 1,
+    color: {
+      dark: darkHex,
+      light: lightHex,
+    },
+  });
+  return dataURIToBuffer(dataURI);
 };
