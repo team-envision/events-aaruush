@@ -19,4 +19,12 @@ export const errors = {
     httpStatus: 401,
     message: "Google OAuth Error.",
   },
+  MONGODB_CONNECT_ERROR: {
+    httpStatus: 500,
+    message: "Could Not Connect to MongoDB.",
+  },
+  AMAZONS3_CONNECT_ERROR: {
+    httpStatus: 500,
+    message: "Could Not Connect to Amazon S3.",
+  },
 };
