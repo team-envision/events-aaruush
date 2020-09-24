@@ -27,4 +27,12 @@ export const errors = {
     httpStatus: 500,
     message: "Could Not Connect to Amazon S3.",
   },
+  CERTIFICATE_NOT_FOUND: {
+    httpStatus: 404,
+    message: "Certificate Not Found.",
+  },
+  S3_FILE_NOT_FOUND: {
+    httpStatus: 404,
+    message: "Certificate Not Found.",
+  },
 };

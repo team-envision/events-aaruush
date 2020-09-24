@@ -7,6 +7,7 @@ import httpLogger from "pino-http";
 
 import { errorHandler } from "./error/error.handler";
 import authRoutes from "./auth/auth.routes";
+import certificateRoutes from "./certificates/certificates.routes";
 import { DatabaseService } from "./services/database.service";
 import { LoggerService } from "./services/logger.service";
 import { StorageService } from "./services/storage.service";
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(httpLogger({ redact: ["req.headers.authorization"] }));
 
 app.use("/api/v1", authRoutes);
+app.use("/api/v1", certificateRoutes);
 
 app.use(errorHandler);
 

@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { Request, Response, NextFunction } from "express";
-type RequestLocations = "query" | "body" | "params";
+type RequestLocations = "query" | "body" | "params" | "headers";
 
 const validateQuery = (
   location: RequestLocations,
@@ -17,6 +17,9 @@ const validateQuery = (
         break;
       case "params":
         _location = req.params;
+        break;
+      case "headers":
+        _location = req.headers;
         break;
     }
     try {
