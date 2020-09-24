@@ -5,10 +5,14 @@ import dataURIToBuffer from "data-uri-to-buffer";
 import { DatabaseService } from "../services/database.service";
 import { errors } from "../error/error.constant";
 import { registrationSchema, certificateRequest } from "./certificates.schema";
-import { EventSchema } from "../events/events.schema";
+import { EventSchema, certSchema } from "../events/events.schema";
 import { StorageService } from "../services/storage.service";
-import { LoggerService } from "../services/logger.service";
 
+/**
+ * Checks if the person has attended the event or not.
+ * @param {certificateRequest} userInfo The user registration request.
+ * @returns {Promise<registrationSchema>} The registration details of the user.
+ */
 export const hasAttended = async (
   userInfo: certificateRequest
 ): Promise<registrationSchema> => {
@@ -20,12 +24,17 @@ export const hasAttended = async (
     email: userInfo.email,
     slug: userInfo.slug,
   })) as registrationSchema;
-  if (!regInfo || regInfo.attended === "no") {
+  if (!regInfo || !regInfo.attended) {
     throw errors.CERTIFICATE_NOT_FOUND;
   }
   return regInfo;
 };
 
+/**
+ * Generates the certificate.
+ * @param {registrationSchema} userReg The registration information of the user.
+ * @returns {Promise<Buffer>} The image buffer of the generated certificate.
+ */
 export const generateCertificate = async (
   userReg: registrationSchema
 ): Promise<Buffer> => {
@@ -33,25 +42,33 @@ export const generateCertificate = async (
     process.env.MONGO_DBNAME!,
     "events"
   );
-  const certParams = (await db.findOne({ slug: userReg.slug })) as EventSchema;
-  if (!certParams) {
+  const certList = (await db.findOne({ slug: userReg.slug })) as EventSchema;
+  if (!certList) {
     throw errors.CERTIFICATE_NOT_FOUND;
   }
-  const certImage: Buffer = await getCertImage(userReg, certParams);
-  return genCert(certParams, certImage, userReg);
+  const certParams: Array<certSchema> = certList.certificates.filter(
+    (e: certSchema) => e.category === userReg.certificate.category
+  );
+  if (certParams.length === 0) {
+    throw errors.CERTIFICATE_NOT_FOUND;
+  }
+
+  const certImage: Buffer = await getCertImage(certParams[0]);
+  return genCert(certParams[0], certImage, userReg);
 };
 
-const getCertImage = async (
-  userReg: registrationSchema,
-  certParams: EventSchema
-): Promise<Buffer> => {
+/**
+ * Returns the appropriate certificate image buffer
+ * @param {registrationSchema} userReg The registration of the user
+ * @param {EventSchema} certParams The event details with the certificate parameters array
+ * @returns {Promise<Buffer>} The image buffer of the required certificate
+ */
+const getCertImage = async (certParams: certSchema): Promise<Buffer> => {
   try {
-    const fileName = !userReg.winner
-      ? certParams.certificate.fileName
-      : `${certParams.certificate.fileName}-winner`;
+    const fileName = certParams.fileName;
     const certImage = await StorageService.getInstance()
       .s3.getObject({
-        Key: `aaruush20/${fileName}.${certParams.certificate.fileType}`,
+        Key: `${process.env.AWS_S3FOLDER}/${fileName}`,
         Bucket: process.env.AWS_S3BUCKET!,
       })
       .promise();
@@ -71,39 +88,36 @@ const getCertImage = async (
  * @returns {Promise<Buffer>} The filled-up certificate
  */
 const genCert = async (
-  certParams: EventSchema,
+  certParams: certSchema,
   certImg: Buffer,
   userReg: registrationSchema
 ): Promise<Buffer> => {
-  const userParams = Object.keys(userReg);
-  console.log(userParams);
+  userReg.certificate.name = userReg.name;
+  const userParams = Object.keys(userReg.certificate);
   let image = await Jimp.read(certImg);
-  const promises = certParams.certificate.objects.map(async (field) => {
+  const promises = certParams.objects.map(async (field) => {
     if (!userParams.includes(field.type)) {
       return;
     }
     const font = await Jimp.loadFont(
-      getFont(field.fontSize, certParams.certificate.fontColor)
+      getFont(field.fontSize, certParams.fontColor)
     );
-    const text = () => {
-      switch (field.type) {
-        case "name":
-          return userReg.name;
+    const text = (type: string): string => {
+      let result: string = "";
+      for (let property in userReg.certificate) {
+        if (property === type) {
+          result = userReg.certificate[property];
           break;
-        case "winner":
-          return userReg.winner?.position;
-          break;
-        case "theme":
-          return userReg.theme;
-          break;
+        }
       }
+      return result;
     };
     image = await image.print(
       font,
       field.x,
       field.y,
       {
-        text: text(),
+        text: text(field.type),
         alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
         alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE,
       },
@@ -112,20 +126,16 @@ const genCert = async (
     );
   });
   await Promise.all(promises);
-  if (certParams.certificate.qr && certParams.certificate.qr.enabled) {
+  if (certParams.qr && certParams.qr.enabled) {
     const qr = await Jimp.read(
       await getQR(
         userReg,
-        certParams.certificate.qr.darkHex,
-        certParams.certificate.qr.lightHex,
-        certParams.certificate.qr.size
+        certParams.qr.darkHex,
+        certParams.qr.lightHex,
+        certParams.qr.size
       )
     );
-    await image.composite(
-      qr,
-      certParams.certificate.qr.x,
-      certParams.certificate.qr.y
-    );
+    await image.composite(qr, certParams.qr.x, certParams.qr.y);
   }
   return image.quality(100).getBufferAsync(Jimp.MIME_JPEG);
 };
@@ -168,7 +178,7 @@ const getQR = async (
   userReg: registrationSchema,
   darkHex: string = "#000000FF",
   lightHex: string = "#FFFFFFFF",
-  size: number = 400
+  size: number = 200
 ): Promise<Buffer> => {
   const url = `${process.env.API_HOSTNAME}/api/v1/verify?registrantId=${userReg.registrantId}`;
   const dataURI = await QRCode.toDataURL(url, {
