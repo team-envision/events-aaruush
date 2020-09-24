@@ -19,11 +19,11 @@ export interface registrationSchema {
   _id: string;
   name: string;
   email: string;
-  attended: "yes" | "no";
+  attended: boolean;
   registrantId: string;
   slug: string;
-  winner?: {
-    position: "1st" | "2nd" | "3rd";
+  certificate: {
+    category: string;
+    [x: string]: string;
   };
-  theme?: string;
 }

@@ -1,4 +1,4 @@
-import { verify, JsonWebTokenError } from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
 import * as yup from "yup";
 import { Request, Response, NextFunction } from "express";
 
