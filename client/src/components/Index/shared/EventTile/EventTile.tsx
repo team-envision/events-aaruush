@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./EventTile.scss";
-import { EventProps } from "../EventRow/EventRow";
+import { EventProps } from "../EventRow";
 
 const EventTile = ({ title, thumbnail_url, description, tags }: EventProps) => {
   return (

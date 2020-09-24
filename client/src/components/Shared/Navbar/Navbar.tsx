@@ -5,7 +5,7 @@ import logo from "../../../assets/images/logo.png";
 
 const Navbar = () => {
   return (
-    <div className="ev-navbar">
+    <div className="fixed ev-navbar z-50">
       <div>
         <figure>
           <img src={logo} alt="logo" />
