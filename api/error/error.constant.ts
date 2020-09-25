@@ -35,4 +35,8 @@ export const errors = {
     httpStatus: 404,
     message: "Certificate Not Found.",
   },
+  JWT_ERROR: {
+    httpStatus: 403,
+    message: "JWT Token Not Found.",
+  },
 };

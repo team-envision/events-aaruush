@@ -33,7 +33,7 @@ const handlePostCertificates = async (
 router.post(
   "/certificates",
   validateQuery("headers", JwtRequestSchema),
-  validateJwt,
+  validateJwt(false),
   validateQuery("body", certificateRequestSchema),
   handlePostCertificates
 );
