@@ -2,6 +2,11 @@ import * as yup from "yup";
 import { Request, Response, NextFunction } from "express";
 type RequestLocations = "query" | "body" | "params" | "headers";
 
+/**
+ * Generic Request Validator
+ * @param {RequestLocations} location The parameter of the req object to be validated.
+ * @param {yup.ObjectSchema} schema The schema against which validation is to be done.
+ */
 const validateQuery = (
   location: RequestLocations,
   schema: yup.ObjectSchema

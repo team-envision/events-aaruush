@@ -13,15 +13,16 @@ export const errorHandler = (
   next: NextFunction
 ) => {
   if (err.httpStatus) {
+    req.log.child({ error: err }).error("ApiError");
     return res.status(err.httpStatus).json({
       success: false,
       error: err.message,
     });
   }
   if (req.log) {
-    req.log.error(err);
+    req.log.child({ error: err }).error("ApiError");
   } else {
-    LoggerService.getInstance().log.error(err);
+    LoggerService.getInstance().log.child({ error: err }).error("ApiError");
   }
   res.status(500).json({
     success: false,
