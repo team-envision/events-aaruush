@@ -27,3 +27,17 @@ export interface registrationSchema {
     [x: string]: string;
   };
 }
+
+export const certificateVerifyRequestSchema = yup
+  .object({
+    registrantId: yup
+      .string()
+      .trim()
+      .min(1, "registrantId cannot be null")
+      .required(),
+  })
+  .required();
+
+export type certificateVerifyRequest = yup.InferType<
+  typeof certificateVerifyRequestSchema
+>;
