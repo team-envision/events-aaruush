@@ -8,6 +8,10 @@ import {
 } from "./auth.schema";
 import { sign as jwtSign } from "jsonwebtoken";
 
+/**
+ * Generates a redirect URL for the user to sign-in with Google
+ * @returns {Promise<string>} The unique OAuth URL to redirect the user to
+ */
 export const generateAuthUrl = async (): Promise<string> => {
   const oauth2client = new google.auth.OAuth2({
     clientId: process.env.OAUTH_CLIENTID,
@@ -27,6 +31,11 @@ export const generateAuthUrl = async (): Promise<string> => {
   return url;
 };
 
+/**
+ * Excahnge the temporary auth code in return to the access token.
+ * @param {string} authCode The temporary authorization code after OAuth successful.
+ * @returns {Promise<string>} The access token issued by Google.
+ */
 export const exchangeAuthCode = async (authCode: string): Promise<string> => {
   try {
     const { data: oauthResponse } = await axios.post<oauthGoogleResponse>(
@@ -49,6 +58,11 @@ export const exchangeAuthCode = async (authCode: string): Promise<string> => {
   }
 };
 
+/**
+ * Get the user identity from Google in exchange of the access token.
+ * @param {string} accessToken The access token recieved from Google.
+ * @returns {Promise<userIdentity>} The Google user identity.
+ */
 export const getUserGoogleProfile = async (
   accessToken: string
 ): Promise<userIdentity> => {
@@ -75,6 +89,11 @@ export const getUserGoogleProfile = async (
   }
 };
 
+/**
+ * Generates the login JWT Token.
+ * @param {userIdentity} user The Google user identity.
+ * @returns {Promise<string>} The JWT token.
+ */
 export const generateJwt = async (user: userIdentity): Promise<string> => {
   const jwt = jwtSign(
     { email: user.email, name: user.name },
