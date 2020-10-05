@@ -26,6 +26,7 @@ export interface EventSchema {
   slug: string;
   date: Date;
   poster: string;
+  description: string;
   link: string;
   certificates: Array<certSchema>;
 }
