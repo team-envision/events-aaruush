@@ -180,7 +180,7 @@ const getQR = async (
   lightHex: string = "#FFFFFFFF",
   size: number = 200
 ): Promise<Buffer> => {
-  const url = `${process.env.API_HOSTNAME}/api/v1/verify?registrantId=${userReg.registrantId}`;
+  const url = `${process.env.API_HOSTNAME}/api/v1/certificates/verify?registrantId=${userReg.registrantId}`;
   const dataURI = await QRCode.toDataURL(url, {
     width: size,
     margin: 1,
@@ -190,4 +190,26 @@ const getQR = async (
     },
   });
   return dataURIToBuffer(dataURI);
+};
+
+/**
+ * The redirect url on the QR to check certificate validity.
+ * @param {string} registrantId The registrant ID for any event.
+ * @returns {registrationSchema} Returns the user registration details.
+ */
+export const verifyCertificate = async (
+  registrantId: string
+): Promise<registrationSchema> => {
+  const db = await DatabaseService.getInstance().getDb(
+    process.env.MONGO_DBNAME!,
+    "registrations"
+  );
+  const result = await db.findOne<registrationSchema>(
+    { registrantId: registrantId, attended: true },
+    { projection: { _id: 0, slug: 0, attended: 0 } }
+  );
+  if (!result) {
+    throw errors.CERTIFICATE_NOT_FOUND;
+  }
+  return result;
 };

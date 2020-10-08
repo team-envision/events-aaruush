@@ -88,10 +88,10 @@ const Home = () => {
     {
       title: "TEST Ex culpa quis officia officia irure.",
       thumbnail_url: [
-        "http://lorempixel.com/1920/1080/nature/2/",
-        "http://lorempixel.com/1920/1080/nature/2/",
-        "http://lorempixel.com/1920/1080/nature/2/",
-        "http://lorempixel.com/1920/1080/nature/2/",
+        "https://lorempixel.com/1920/1080/nature/2/",
+        "https://lorempixel.com/1920/1080/nature/2/",
+        "https://lorempixel.com/1920/1080/nature/2/",
+        "https://lorempixel.com/1920/1080/nature/2/",
       ],
       description:
         "Minim esse dolore dolore ea irure tempor commodo in aliquip. Anim consectetur tempor commodo quis non. Officia fugiat pariatur esse proident Lorem deserunt mollit dolor ut aliqua eiusmod. Eiusmod minim minim ea Lorem sit. Dolore exercitation consequat amet dolore aute et officia.",
@@ -99,52 +99,52 @@ const Home = () => {
     },
     {
       title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/1/"],
+      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/1/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: ["http://lorempixel.com/1920/1080/city/2/"],
+      thumbnail_url: ["https://lorempixel.com/1920/1080/city/2/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: ["http://lorempixel.com/1920/1080/city/2/"],
+      thumbnail_url: ["https://lorempixel.com/1920/1080/city/2/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
+      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
+      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
+      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
+      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
+      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
@@ -153,34 +153,34 @@ const Home = () => {
   const items2 = [
     {
       title: "Ex culpa quis officia officia irure.",
-      thumbnail_url: ["http://lorempixel.com/1080/1920/nature/2/"],
+      thumbnail_url: ["https://lorempixel.com/1080/1920/nature/2/"],
       description: "Labore ex mollit Lorem sit.",
       tags: ["Something", "Event"],
     },
     {
       title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: ["http://lorempixel.com/1080/1920/sports/1/"],
+      thumbnail_url: ["https://lorempixel.com/1080/1920/sports/1/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: ["http://lorempixel.com/1080/1920/sports/1/"],
+      thumbnail_url: ["https://lorempixel.com/1080/1920/sports/1/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: ["http://lorempixel.com/1080/1920/city/2/"],
+      thumbnail_url: ["https://lorempixel.com/1080/1920/city/2/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["http://lorempixel.com/1080/1920/sports/3/"],
+      thumbnail_url: ["https://lorempixel.com/1080/1920/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },

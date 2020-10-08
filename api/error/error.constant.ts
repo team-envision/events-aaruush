@@ -23,6 +23,10 @@ export const errors = {
     httpStatus: 500,
     message: "Could Not Connect to MongoDB.",
   },
+  MONGODB_QUERY_ERROR: {
+    httpStatus: 500,
+    message: "Error Executing MongoDB Query",
+  },
   AMAZONS3_CONNECT_ERROR: {
     httpStatus: 500,
     message: "Could Not Connect to Amazon S3.",
@@ -34,5 +38,13 @@ export const errors = {
   S3_FILE_NOT_FOUND: {
     httpStatus: 404,
     message: "Certificate Not Found.",
+  },
+  JWT_ERROR: {
+    httpStatus: 403,
+    message: "JWT Token Not Found.",
+  },
+  CORS_ERROR: {
+    httpStatus: 500,
+    message: "Not Allowed by CORS",
   },
 };

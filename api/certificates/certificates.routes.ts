@@ -5,12 +5,19 @@ import validateQuery from "../util/validateQuery";
 import {
   certificateRequestSchema,
   certificateRequest,
+  certificateVerifyRequestSchema,
+  certificateVerifyRequest,
+  registrationSchema,
 } from "./certificates.schema";
-import { hasAttended, generateCertificate } from "./certificates.service";
+import {
+  hasAttended,
+  generateCertificate,
+  verifyCertificate,
+} from "./certificates.service";
 
 const router: Router = Router();
 
-const handlePostCertificates = async (
+const handlePostCertificatesGenerate = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -30,12 +37,32 @@ const handlePostCertificates = async (
   }
 };
 
+const handleGetCertificatesVerify = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { registrantId } = req.query as certificateVerifyRequest;
+    const userReg: registrationSchema = await verifyCertificate(registrantId);
+    res.status(200).json({ success: true, ...userReg });
+  } catch (err) {
+    next(err);
+  }
+};
+
 router.post(
-  "/certificates",
+  "/certificates/generate",
   validateQuery("headers", JwtRequestSchema),
-  validateJwt,
+  validateJwt(false),
   validateQuery("body", certificateRequestSchema),
-  handlePostCertificates
+  handlePostCertificatesGenerate
+);
+
+router.get(
+  "/certificates/verify",
+  validateQuery("query", certificateVerifyRequestSchema),
+  handleGetCertificatesVerify
 );
 
 export default router;
