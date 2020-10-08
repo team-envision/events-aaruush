@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
+import Carousel from "../components/Shared/Carousel";
+
 export const ModalContext = React.createContext({
   isOpen: false,
   setIsOpen: (_isOpen: boolean) => {},
-  setModalImg: (_modalImg: string) => {},
+  setModalImg: (_modalImg: string[]) => {},
   setModalTitle: (_modalTitle: string) => {},
   setModalTags: (_modalTags: string[] | undefined) => {},
   setModalDesc: (_modalDesc: string) => {},
@@ -12,7 +14,7 @@ export const ModalContext = React.createContext({
 
 const ModalContextProvider = (props: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [modalImg, setModalImg] = useState<string>();
+  const [modalImg, setModalImg] = useState<string[]>();
   const [modalTitle, setModalTitle] = useState<string>();
   const [modalTags, setModalTags] = useState<string[] | undefined>();
   const [modalDesc, setModalDesc] = useState<string>();
@@ -34,16 +36,9 @@ const ModalContextProvider = (props: any) => {
           <div className="lg:relative m-auto pb-20">
             <AiFillCloseCircle
               onClick={() => setIsOpen(!isOpen)}
-              className="cursor-pointer ml-auto lg:absolute text-5xl lg:mr-4 mt-4 top-0 right-0 text-baseBlack bg-baseWhite rounded-full"
+              className="cursor-pointer ml-auto lg:absolute text-5xl lg:mr-4 mt-4 top-0 right-0 text-baseBlack bg-baseWhite rounded-full z-50"
             />
-            <div className="w-full h-auto lg:h-80vh text-center mt-4 lg:mt-0">
-              <img
-                src={modalImg}
-                alt={modalTitle}
-                className="max-h-full"
-                width="100%"
-              />
-            </div>
+            <Carousel images={modalImg} />
             <div className="flex flex-wrap mt-5">
               <div className="mr-auto text-3xl text-center">{modalTitle}</div>
               {/* <div className="ml-auto">

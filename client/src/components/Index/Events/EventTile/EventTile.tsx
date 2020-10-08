@@ -19,7 +19,7 @@ const EventTile = ({ title, thumbnail_url, description, tags }: EventProps) => {
   return (
     <div className="ev-event-tile relative cursor-pointer">
       <figure>
-        <img src={thumbnail_url} alt="Kitten" className="w-full h-auto" />
+        <img src={thumbnail_url[0]} alt="Kitten" className="w-full h-auto" />
       </figure>
       <div className="absolute w-full h-full top-0 left-0 opacity-0">
         <div className="content w-11/12 lg:w-4/5 absolute">

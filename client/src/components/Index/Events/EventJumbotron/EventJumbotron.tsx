@@ -19,7 +19,7 @@ const EventJumbotron = (props: EventProps) => {
     <div className="flex flex-wrap">
       <div className="w-full lg:w-3/5 my-auto">
         <figure>
-          <img src={props.thumbnail_url} alt="Kitten" width="100%" />
+          <img src={props.thumbnail_url[0]} alt="Kitten" width="100%" />
         </figure>
       </div>
       <div className="flex flex-wrap w-full lg:w-2/5 my-auto lg:px-10 lg:text-center">

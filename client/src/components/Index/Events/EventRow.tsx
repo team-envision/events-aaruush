@@ -10,16 +10,22 @@ export enum Layout {
   shot = "shot",
 }
 
+interface Item {
+  title: string;
+  thumbnail_url: string[];
+  tags?: string[];
+  description: string;
+}
+
 interface Props {
   label?: string;
   layout: Layout;
-  // TODO - make Item interface
-  items: any;
+  items: Item[];
 }
 
 export interface EventProps {
   title: string;
-  thumbnail_url: string;
+  thumbnail_url: string[];
   description: string;
   tags?: string[];
 }
@@ -51,9 +57,7 @@ const Event = (layout: Layout, items?: any) => {
     case Layout.jumbotron:
       return (
         <>
-          {items.map((item: any) => (
-            <EventJumbotron key={item.title} {...item} />
-          ))}
+          <EventJumbotron {...items[0]} />
         </>
       );
   }

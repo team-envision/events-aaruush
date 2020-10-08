@@ -8,68 +8,77 @@ const Home = () => {
   const days = [
     {
       title: "Ex culpa quis officia officia irure.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description:
         "Minim esse dolore dolore ea irure tempor commodo in aliquip. Anim consectetur tempor commodo quis non. Officia fugiat pariatur esse proident Lorem deserunt mollit dolor ut aliqua eiusmod. Eiusmod minim minim ea Lorem sit. Dolore exercitation consequat amet dolore aute et officia.",
       tags: ["A", "B", "TAGGSGGSGSG"],
     },
     {
       title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url:
+      thumbnail_url: [
         "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      ],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
@@ -77,60 +86,65 @@ const Home = () => {
 
   const items = [
     {
-      title: "Ex culpa quis officia officia irure.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/nature/2/",
+      title: "TEST Ex culpa quis officia officia irure.",
+      thumbnail_url: [
+        "http://lorempixel.com/1920/1080/nature/2/",
+        "http://lorempixel.com/1920/1080/nature/2/",
+        "http://lorempixel.com/1920/1080/nature/2/",
+        "http://lorempixel.com/1920/1080/nature/2/",
+      ],
       description:
         "Minim esse dolore dolore ea irure tempor commodo in aliquip. Anim consectetur tempor commodo quis non. Officia fugiat pariatur esse proident Lorem deserunt mollit dolor ut aliqua eiusmod. Eiusmod minim minim ea Lorem sit. Dolore exercitation consequat amet dolore aute et officia.",
       tags: ["A", "B", "TAGGSGGSGSG"],
     },
     {
       title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/sports/1/",
+      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/1/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/city/2/",
+      thumbnail_url: ["http://lorempixel.com/1920/1080/city/2/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/city/2/",
+      thumbnail_url: ["http://lorempixel.com/1920/1080/city/2/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      thumbnail_url: ["http://lorempixel.com/1920/1080/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
@@ -139,34 +153,34 @@ const Home = () => {
   const items2 = [
     {
       title: "Ex culpa quis officia officia irure.",
-      thumbnail_url: "http://lorempixel.com/1080/1920/nature/2/",
+      thumbnail_url: ["http://lorempixel.com/1080/1920/nature/2/"],
       description: "Labore ex mollit Lorem sit.",
       tags: ["Something", "Event"],
     },
     {
       title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: "http://lorempixel.com/1080/1920/sports/1/",
+      thumbnail_url: ["http://lorempixel.com/1080/1920/sports/1/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: "http://lorempixel.com/1080/1920/sports/1/",
+      thumbnail_url: ["http://lorempixel.com/1080/1920/sports/1/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: "http://lorempixel.com/1080/1920/city/2/",
+      thumbnail_url: ["http://lorempixel.com/1080/1920/city/2/"],
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
       tags: ["A", "B"],
     },
     {
       title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: "http://lorempixel.com/1080/1920/sports/3/",
+      thumbnail_url: ["http://lorempixel.com/1080/1920/sports/3/"],
       description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
@@ -223,20 +237,12 @@ const Home = () => {
         <EventRow
           layout={Layout.jumbotron}
           label="Nites & Live"
-          items={[items[0]]}
+          items={items}
         />
         <EventRow layout={Layout.shot} items={items} />
-        <EventRow
-          layout={Layout.jumbotron}
-          label="Workshops"
-          items={[items[0]]}
-        />
+        <EventRow layout={Layout.jumbotron} label="Workshops" items={items} />
         <EventRow layout={Layout.shot} items={items} />
-        <EventRow
-          layout={Layout.jumbotron}
-          label="Challenges"
-          items={[items[2]]}
-        />
+        <EventRow layout={Layout.jumbotron} label="Challenges" items={items} />
         <EventRow layout={Layout.shot} items={items2} />
       </div>
     </div>

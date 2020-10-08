@@ -20,7 +20,7 @@ const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
     <div className="ev-event-shot relative overflow-hidden cursor-pointer">
       <figure>
         <img
-          src={thumbnail_url}
+          src={thumbnail_url[0]}
           alt="Kitten"
           className="h-full w-auto object-cover object-center"
         />
