@@ -11,7 +11,8 @@
     "start": "node ./build/app.js",
     "start:dev": "npx nodemon ./build/app.js | pino-pretty",
     "build": "npx tsc",
-    "build:dev": "npx tsc --watch"
+    "build:dev": "npx tsc --watch",
+    "client": "cd client && yarn start"
   },
   "devDependencies": {
     "@types/aws-sdk": "^2.7.0",

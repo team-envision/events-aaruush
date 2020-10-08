@@ -6,10 +6,16 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      fontSize: {
+        "7xl": "5rem",
+        "8xl": "6rem",
+        "9xl": "7rem",
+      },
       colors: {
-        background: "#141414",
-        text: "#e5e5e5",
+        baseBlack: "#141414",
+        baseWhite: "#e5e5e5",
         primary: "#23385f",
+        spinnerBlack: "#030303",
       },
       inset: {
         10: "10%",
@@ -23,10 +29,13 @@ module.exports = {
         90: "90%",
       },
       height: {
+        "80vh": "80vh",
         "90vh": "90vh",
       },
     },
   },
-  variants: {},
+  variants: {
+    margin: ["responsive", "first"],
+  },
   plugins: [],
 };
