@@ -1,0 +1,51 @@
+div.ev-event-shot {
+  $width: 10rem;
+  $scale: 1.1;
+  max-width: $width * 16 / 9;
+  max-height: $width;
+  transition: 0.2s all ease-in-out;
+  transition-delay: 200ms;
+  &:hover {
+    max-width: $width * $scale * 16 / 9;
+    max-height: $width * $scale;
+    & > div {
+      opacity: 1;
+    }
+  }
+  & > div {
+    transition: 0.2s all ease-in-out;
+    transition-delay: 200ms;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.6) 33%);
+    div.content {
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      ul {
+        li {
+          &::after {
+            content: "•";
+            display: inline-block;
+            margin: 0 0.2rem;
+            opacity: 0.5;
+          }
+          &:last-child::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 991px) {
+  div.ev-event-shot {
+    $width: 18rem;
+    $scale: 1.1;
+    max-width: $width * 16 / 9;
+    max-height: $width;
+    &:hover {
+      max-width: $width * $scale * 16 / 9;
+      max-height: $width * $scale;
+    }
+  }
+}

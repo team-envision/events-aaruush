@@ -4,15 +4,18 @@ import { BrowserRouter } from "react-router-dom";
 
 import "./index.scss";
 import "./tailwind.scss";
-import Navbar  from "./components/Shared/Navbar/Navbar";
+import ModalContextProvider from "./context/Modal";
+import Navbar from "./components/Shared/Navbar";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Navbar />
-      <App />
+      <ModalContextProvider>
+        <Navbar />
+        <App />
+      </ModalContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
