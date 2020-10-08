@@ -15,6 +15,7 @@ module.exports = {
         baseBlack: "#141414",
         baseWhite: "#e5e5e5",
         primary: "#23385f",
+        spinnerBlack: "#030303",
       },
       inset: {
         10: "10%",
