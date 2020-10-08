@@ -4,6 +4,9 @@ import helmet from "helmet";
 import bodyParser from "body-parser";
 import { config as dotenvConfig } from "dotenv";
 import httpLogger from "pino-http";
+import path from "path";
+
+dotenvConfig();
 
 import { errorHandler, ApiError } from "./error/error.handler";
 import authRoutes from "./auth/auth.routes";
@@ -14,7 +17,6 @@ import { LoggerService } from "./services/logger.service";
 import { StorageService } from "./services/storage.service";
 import { errors } from "./error/error.constant";
 
-dotenvConfig();
 const app: Express = express();
 
 const whitelist = ["https://aaruush.org", "https://googleapis.com"];
@@ -72,6 +74,17 @@ app.use(httpLogger({ redact: ["req.headers.authorization"] }));
 app.use("/api/v1", authRoutes);
 app.use("/api/v1", certificateRoutes);
 app.use("/api/v1", eventsRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "..", "client", "build")));
+  app.use("*", (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+    } catch (err) {
+      next(err);
+    }
+  });
+}
 
 app.use(errorHandler);
 

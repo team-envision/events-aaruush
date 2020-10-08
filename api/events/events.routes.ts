@@ -38,12 +38,13 @@ const handleGetEvents = async (
     next(err);
   }
 };
-if (process.env.NODE_ENV === "development")
+if (process.env.NODE_ENV === "development") {
   router.post(
     "/events",
     validateQuery("body", EventPostRequestSchema),
     handlePostEvents
   );
+}
 router.get("/events", handleGetEvents);
 
 export default router;
