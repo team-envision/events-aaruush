@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaMagic as Magic, FaInfoCircle as Circle } from "react-icons/fa";
 
-import EventRow from "./shared/EventRow";
-import { Layout } from "./shared/EventRow";
+import EventRow from "./Events/EventRow";
+import { Layout } from "./Events/EventRow";
 
 const Home = () => {
   const items = [
@@ -32,6 +32,30 @@ const Home = () => {
       thumbnail_url: "http://lorempixel.com/1920/1080/city/2/",
       description:
         "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      description: "Labore ex mollit Lorem sit cillum.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      description: "Labore ex mollit Lorem sit cillum.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      description: "Labore ex mollit Lorem sit cillum.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url: "http://lorempixel.com/1920/1080/sports/3/",
+      description: "Labore ex mollit Lorem sit cillum.",
       tags: ["A", "B"],
     },
     {
@@ -105,18 +129,18 @@ const Home = () => {
             aliqua ut labore velit ex magna duis ipsum sint.
           </p>
           <div className="flex flex-wrap w-full lg:w-2/3 mt-6">
-            <button className="w-2/5 my-auto ml-auto rounded-lg bg-background text-text py-4 px-6">
+            <button className="w-2/5 my-auto ml-auto rounded-lg bg-baseWhite text-baseBlack py-5 px-6">
               <Link
                 to="/event/register"
                 className="flex flex-wrap m-auto w-full"
               >
-                <Magic className="m-auto" />
+                <Magic className="m-auto text-xl" />
                 <span className="m-auto">Register</span>
               </Link>
             </button>
-            <button className="w-2/5 my-auto ml-auto rounded-lg bg-background text-text py-4 px-6">
+            <button className="w-2/5 my-auto ml-auto rounded-lg bg-baseBlack text-baseWhite py-4 px-6">
               <Link to="/event/info" className="flex flex-wrap m-auto w-full">
-                <Circle className="m-auto" />
+                <Circle className="m-auto text-xl" />
                 <span className="m-auto">More Info</span>
               </Link>
             </button>
@@ -125,11 +149,24 @@ const Home = () => {
       </div>
       <div className="w-3/4 mx-auto mt-10">
         <EventRow layout={Layout.tile} label="Aaruush Days" items={items} />
-        <EventRow layout={Layout.shot} label="Highlights" items={items2} />
-        <EventRow layout={Layout.jumbotron} items={[items[0]]} />
-        <EventRow layout={Layout.shot} label="Events" items={items2} />
-        <EventRow layout={Layout.jumbotron} items={[items[0]]} />
-        <EventRow layout={Layout.tile} label="Workshops" items={items} />
+        <EventRow
+          layout={Layout.jumbotron}
+          label="Nites & Live"
+          items={[items[1]]}
+        />
+        <EventRow layout={Layout.shot} items={items} />
+        <EventRow
+          layout={Layout.jumbotron}
+          label="Workshops"
+          items={[items[0]]}
+        />
+        <EventRow layout={Layout.shot} items={items} />
+        <EventRow
+          layout={Layout.jumbotron}
+          label="Challenges"
+          items={[items[2]]}
+        />
+        <EventRow layout={Layout.shot} items={items} />
       </div>
     </div>
   );
