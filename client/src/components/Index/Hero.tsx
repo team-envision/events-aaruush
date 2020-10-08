@@ -212,17 +212,17 @@ const Home = () => {
             access to Special Aaruush Evenings and Aaruush Nites!
           </p>
           <div className="flex flex-wrap text-xl w-full lg:w-2/3 mt-8">
-            <button className="w-3/4 md:w-1/2 lg:w-3/5 my-auto mr-auto rounded-lg bg-baseWhite text-baseBlack py-4 px-6">
-              <a
-                href="https://aaruush.org/register"
-                className="flex flex-wrap m-auto w-full"
-              >
+            <a
+              href="https://aaruush.org/register"
+              className="w-3/4 md:w-1/2 lg:w-3/5 my-auto mr-auto rounded-lg bg-baseWhite text-baseBlack py-4 px-6"
+            >
+              <button className="flex flex-wrap m-auto w-full">
                 <Magic className="m-auto text-xl" />
                 <span className="m-auto small-caps font-bold">
                   Register Now !
                 </span>
-              </a>
-            </button>
+              </button>
+            </a>
             {/* <button className="w-2/5 my-auto ml-auto rounded-lg bg-baseBlack text-baseWhite py-4 px-6">
               <Link to="/event/info" className="flex flex-wrap m-auto w-full">
                 <FaInfoCircle className="m-auto text-xl" />

@@ -43,9 +43,9 @@ const ModalContextProvider = (props: any) => {
               <div className="mr-auto text-3xl text-center">{modalTitle}</div>
               {/* <div className="ml-auto">
                 {modalTags &&
-                  modalTags.map((tag: string) => (
+                  modalTags.map((tag: string, index:string) => (
                     <span
-                      key={tag}
+                      key={index.toString()}
                       className="mr-8 px-5 py-2 bg-baseWhite rounded-lg text-baseBlack font-bold"
                     >
                       {tag}

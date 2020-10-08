@@ -30,13 +30,16 @@ export interface EventProps {
   tags?: string[];
 }
 
-const Event = (layout: Layout, items?: any) => {
+const Event = (layout: Layout, items: Item[]) => {
   switch (layout) {
     case Layout.tile:
       return (
         <>
-          {items.map((item: any) => (
-            <div className="flex flex-grow flex-shrink-0 mr-4" key={item.title}>
+          {items.map((item: Item, index: number) => (
+            <div
+              className="flex flex-grow flex-shrink-0 mr-4"
+              key={index.toString()}
+            >
               <EventTile {...item} />
             </div>
           ))}
@@ -46,8 +49,11 @@ const Event = (layout: Layout, items?: any) => {
     case Layout.shot:
       return (
         <>
-          {items.map((item: any) => (
-            <div className="flex flex-grow flex-shrink-0 mr-4" key={item.title}>
+          {items.map((item: Item, index: number) => (
+            <div
+              className="flex flex-grow flex-shrink-0 mr-4"
+              key={index.toString()}
+            >
               <EventShot {...item} />
             </div>
           ))}

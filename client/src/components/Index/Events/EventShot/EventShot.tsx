@@ -46,8 +46,8 @@ const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
           </p>
           {tags && (
             <ul className="hidden lg:flex list-none mt-4">
-              {tags?.map((tag) => {
-                return <li key={tag}>{tag}</li>;
+              {tags?.map((tag: string, index: number) => {
+                return <li key={index.toString()}>{tag}</li>;
               })}
             </ul>
           )}
