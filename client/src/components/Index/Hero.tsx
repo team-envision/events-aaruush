@@ -1,17 +1,87 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaMagic as Magic, FaInfoCircle as Circle } from "react-icons/fa";
+import { FaMagic as Magic } from "react-icons/fa";
 
 import EventRow from "./Events/EventRow";
 import { Layout } from "./Events/EventRow";
 
 const Home = () => {
+  const days = [
+    {
+      title: "Ex culpa quis officia officia irure.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description:
+        "Minim esse dolore dolore ea irure tempor commodo in aliquip. Anim consectetur tempor commodo quis non. Officia fugiat pariatur esse proident Lorem deserunt mollit dolor ut aliqua eiusmod. Eiusmod minim minim ea Lorem sit. Dolore exercitation consequat amet dolore aute et officia.",
+      tags: ["A", "B", "TAGGSGGSGSG"],
+    },
+    {
+      title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description:
+        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Aliqua adipisicing laborum nulla et.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description:
+        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Aliqua adipisicing laborum nulla et.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description:
+        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description: "Labore ex mollit Lorem sit cillum.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description: "Labore ex mollit Lorem sit cillum.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description: "Labore ex mollit Lorem sit cillum.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description: "Labore ex mollit Lorem sit cillum.",
+      tags: ["A", "B"],
+    },
+    {
+      title: "Esse proident eiusmod in ea id.",
+      thumbnail_url:
+        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
+      description: "Labore ex mollit Lorem sit cillum.",
+      tags: ["A", "B"],
+    },
+  ];
+
   const items = [
     {
       title: "Ex culpa quis officia officia irure.",
       thumbnail_url: "http://lorempixel.com/1920/1080/nature/2/",
-      description: "Labore ex mollit Lorem sit.",
-      tags: ["A", "B"],
+      description:
+        "Minim esse dolore dolore ea irure tempor commodo in aliquip. Anim consectetur tempor commodo quis non. Officia fugiat pariatur esse proident Lorem deserunt mollit dolor ut aliqua eiusmod. Eiusmod minim minim ea Lorem sit. Dolore exercitation consequat amet dolore aute et officia.",
+      tags: ["A", "B", "TAGGSGGSGSG"],
     },
     {
       title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
@@ -116,43 +186,40 @@ const Home = () => {
             type="video/mp4"
           />
         </video>
-        <div className="absolute w-11/12 lg:w-2/5 top-30 lg:top-40 left-0 lg:left-10 z-50">
-          <h2 className="text-3xl lg:text-4xl pl-5">
-            Qui ullamco labore enim consequat.
-          </h2>
-          <p className="text-base lg:text-lg text-justify w-full pl-5">
-            Ipsum incididunt elit nisi sunt anim esse proident voluptate laborum
-            eu in dolor nostrud ullamco. Est excepteur culpa Lorem et. Excepteur
-            do consequat ad quis consectetur esse proident. Ex dolore ex ad
-            dolor cupidatat occaecat. Fugiat consectetur elit proident laboris
-            irure velit est officia. Ea magna dolore adipisicing non ipsum
-            aliqua ut labore velit ex magna duis ipsum sint.
+        <div className="absolute w-11/12 lg:w-2/5 top-30 lg:top-50 left-0 lg:left-10 z-50">
+          <h2 className="text-3xl lg:text-4xl">Common Registration</h2>
+          <p className="text-base lg:text-lg text-justify w-full">
+            5 Days of Technological Extravaganza Participate in an array of
+            experiences inclusive of Domain Events, Luminary Addresses,
+            Lanstorm, Unconference, and much more. <wbr />
+            Avail Your Ticket to the 14th edition of Aaruush, including free
+            access to Special Aaruush Evenings and Aaruush Nites!
           </p>
-          <div className="flex flex-wrap w-full lg:w-2/3 mt-6">
-            <button className="w-2/5 my-auto ml-auto rounded-lg bg-baseWhite text-baseBlack py-5 px-6">
-              <Link
-                to="/event/register"
+          <div className="flex flex-wrap text-xl w-full lg:w-2/3 mt-8">
+            <button className="w-2/5 my-auto mr-auto rounded-lg bg-baseWhite text-baseBlack py-4 px-6">
+              <a
+                href="https://aaruush.org/register"
                 className="flex flex-wrap m-auto w-full"
               >
                 <Magic className="m-auto text-xl" />
-                <span className="m-auto">Register</span>
-              </Link>
+                <span className="m-auto">Register Now !</span>
+              </a>
             </button>
-            <button className="w-2/5 my-auto ml-auto rounded-lg bg-baseBlack text-baseWhite py-4 px-6">
+            {/* <button className="w-2/5 my-auto ml-auto rounded-lg bg-baseBlack text-baseWhite py-4 px-6">
               <Link to="/event/info" className="flex flex-wrap m-auto w-full">
-                <Circle className="m-auto text-xl" />
+                <FaInfoCircle className="m-auto text-xl" />
                 <span className="m-auto">More Info</span>
               </Link>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
       <div className="w-3/4 mx-auto mt-10">
-        <EventRow layout={Layout.tile} label="Aaruush Days" items={items} />
+        <EventRow layout={Layout.tile} label="Aaruush Days" items={days} />
         <EventRow
           layout={Layout.jumbotron}
           label="Nites & Live"
-          items={[items[1]]}
+          items={[items[0]]}
         />
         <EventRow layout={Layout.shot} items={items} />
         <EventRow
@@ -166,7 +233,7 @@ const Home = () => {
           label="Challenges"
           items={[items[2]]}
         />
-        <EventRow layout={Layout.shot} items={items} />
+        <EventRow layout={Layout.shot} items={items2} />
       </div>
     </div>
   );

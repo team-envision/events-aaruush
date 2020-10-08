@@ -8,7 +8,6 @@ export const ModalContext = React.createContext({
   setModalTitle: (_modalTitle: string) => {},
   setModalTags: (_modalTags: string[] | undefined) => {},
   setModalDesc: (_modalDesc: string) => {},
-  submitHandler: () => {},
 });
 
 const ModalContextProvider = (props: any) => {
@@ -17,10 +16,6 @@ const ModalContextProvider = (props: any) => {
   const [modalTitle, setModalTitle] = useState<string>();
   const [modalTags, setModalTags] = useState<string[] | undefined>();
   const [modalDesc, setModalDesc] = useState<string>();
-
-  const submitHandler = () => {
-    alert("Logged out.");
-  };
 
   const Backdrop = () => {
     return (
@@ -36,12 +31,12 @@ const ModalContextProvider = (props: any) => {
       <>
         <Backdrop />
         <div className="fixed bg-transparent flex flex-wrap m-auto overflow-y-scroll max-h-screen w-10/12 top-10 bottom-0 right-0 left-0 z-50">
-          <div className="relative m-auto pb-64">
+          <div className="relative m-auto pb-20">
             <AiFillCloseCircle
               onClick={() => setIsOpen(!isOpen)}
               className="cursor-pointer absolute text-5xl mr-4 mt-4 top-0 right-0 text-baseBlack bg-baseWhite rounded-full"
             />
-            <div className="w-full h-90vh text-center">
+            <div className="w-full h-80vh text-center">
               <img
                 src={modalImg}
                 alt={modalTitle}
@@ -51,15 +46,25 @@ const ModalContextProvider = (props: any) => {
             </div>
             <div className="flex flex-wrap mt-5">
               <div className="mr-auto text-3xl text-center">{modalTitle}</div>
-              <div className="ml-auto">
+              {/* <div className="ml-auto">
                 {modalTags &&
                   modalTags.map((tag: string) => (
-                    <span className="mr-8 px-5 py-2 bg-baseWhite rounded-lg bg-opacity-75 text-baseBlack">
+                    <span
+                      key={tag}
+                      className="mr-8 px-5 py-2 bg-baseWhite rounded-lg text-baseBlack font-bold"
+                    >
                       {tag}
                     </span>
                   ))}
+              </div> */}
+              <div className="w-full flex flex-wrap mt-5">
+                <div className="w-7/12 my-auto mr-auto">{modalDesc}</div>
+                <div className="my-auto ml-auto text-center">
+                  <button className="px-6 py-4 mr-10 bg-green-600 rounded-lg focus:outline-none text-xl font-bold">
+                    Register Now!
+                  </button>
+                </div>
               </div>
-              <div className="w-full mt-5">{modalDesc}</div>
             </div>
           </div>
         </div>
@@ -72,14 +77,12 @@ const ModalContextProvider = (props: any) => {
       value={{
         isOpen,
         setIsOpen,
-        submitHandler,
         setModalTitle,
         setModalImg,
         setModalTags,
         setModalDesc,
       }}
     >
-      {console.log(isOpen)}
       {props.children}
       {isOpen && <Modal />}
     </ModalContext.Provider>

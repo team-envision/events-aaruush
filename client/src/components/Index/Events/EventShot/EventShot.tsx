@@ -12,7 +12,7 @@ const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
     modalContext.setModalImg(thumbnail_url);
     modalContext.setModalTitle(title);
     modalContext.setModalTags(tags);
-    modalContext.setModalDesc(title);
+    modalContext.setModalDesc(description);
     modalContext.setIsOpen(!modalContext.isOpen);
   };
 
@@ -34,8 +34,12 @@ const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
               <FaInfoCircle className="m-auto text-lg" />
             </button>
           </div>
-          <h4>{title}</h4>
-          <p>{description}</p>
+          <h4 className="text-xl font-bold">{title}</h4>
+          <p className="text-base">
+            {description.length > 100
+              ? `${description.trim().substring(0, 100)}...`
+              : description}
+          </p>
           {tags && (
             <ul>
               {tags?.map((tag) => {
