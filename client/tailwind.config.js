@@ -6,6 +6,11 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      fontSize: {
+        "7xl": "5rem",
+        "8xl": "6rem",
+        "9xl": "7rem",
+      },
       colors: {
         baseBlack: "#141414",
         baseWhite: "#e5e5e5",

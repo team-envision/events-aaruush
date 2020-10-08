@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.scss";
 import "./tailwind.scss";
 import ModalContextProvider from "./context/Modal";
-import Navbar from "./components/Shared/Navbar/Navbar";
+import Navbar from "./components/Shared/Navbar";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 

@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 import Home from "./components/Index/Hero";
+import NotFound from "./components/NotFound/Hero";
 import { Constants } from "./constants";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" exact>
           hi, this is the admin route
         </Route>
+        <Route path="*" component={NotFound} />
       </Switch>
     );
   };
@@ -28,6 +30,7 @@ function App() {
     return (
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="*" component={NotFound} />
       </Switch>
     );
   };
