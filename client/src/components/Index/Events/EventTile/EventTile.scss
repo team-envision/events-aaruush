@@ -3,7 +3,7 @@ div.ev-event-tile {
   $scale: 1.2;
   position: relative;
   max-width: $width;
-  max-height: $width * 9 / 16;
+  max-height: $width * 7/6;
   transition: 0.2s all ease-in-out;
   transition-delay: 200ms;
   cursor: pointer;
@@ -38,7 +38,7 @@ div.ev-event-tile {
 
   &:hover {
     max-width: $width * $scale;
-    max-height: $width * $scale * 9 / 16;
+    max-height: $width * $scale * 7 / 6;
 
     & > div {
       opacity: 1;

@@ -2,8 +2,8 @@ div.ev-event-shot {
   $width: 18rem;
   $scale: 1.1;
   position: relative;
-  max-width: $width;
-  max-height: $width * 7/6;
+  max-width: $width * 16/9;
+  max-height: $width;
   transition: 0.2s all ease-in-out;
   transition-delay: 200ms;
   cursor: pointer;
@@ -14,6 +14,15 @@ div.ev-event-shot {
     width: auto;
     object-fit: cover;
     object-position: center;
+  }
+
+  &:hover {
+    max-width: $width * $scale * 16/9;
+    max-height: $width * $scale;
+
+    & > div {
+      opacity: 1;
+    }
   }
 
   & > div {
@@ -31,7 +40,6 @@ div.ev-event-shot {
       bottom: 1rem;
       left: 1rem;
       right: 1rem;
-
       position: absolute;
 
       h4 {
@@ -61,15 +69,6 @@ div.ev-event-shot {
           }
         }
       }
-    }
-  }
-
-  &:hover {
-    max-width: $width * $scale;
-    max-height: $width * $scale * 7/6;
-
-    & > div {
-      opacity: 1;
     }
   }
 }

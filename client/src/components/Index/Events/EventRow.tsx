@@ -1,5 +1,5 @@
 import React from "react";
-import "./EventRow.scss";
+
 import EventTile from "./EventTile/EventTile";
 import EventShot from "./EventShot/EventShot";
 import EventJumbotron from "./EventJumbotron/EventJumbotron";
@@ -20,27 +20,19 @@ interface Props {
 export interface EventProps {
   title: string;
   thumbnail_url: string;
-  description?: string;
+  description: string;
   tags?: string[];
 }
 
-const render = (layout: Layout, items?: any) => {
+const Event = (layout: Layout, items?: any) => {
   switch (layout) {
     case Layout.tile:
       return (
         <>
           {items.map((item: any) => (
-            <div className="grow" key={item.title}>
+            <div className="flex flex-grow flex-shrink-0 mr-4" key={item.title}>
               <EventTile {...item} />
             </div>
-          ))}
-        </>
-      );
-    case Layout.jumbotron:
-      return (
-        <>
-          {items.map((item: any) => (
-            <EventJumbotron key={item.title} {...item} />
           ))}
         </>
       );
@@ -49,9 +41,18 @@ const render = (layout: Layout, items?: any) => {
       return (
         <>
           {items.map((item: any) => (
-            <div className="grow" key={item.title}>
+            <div className="flex flex-grow flex-shrink-0 mr-4" key={item.title}>
               <EventShot {...item} />
             </div>
+          ))}
+        </>
+      );
+
+    case Layout.jumbotron:
+      return (
+        <>
+          {items.map((item: any) => (
+            <EventJumbotron key={item.title} {...item} />
           ))}
         </>
       );
@@ -60,9 +61,11 @@ const render = (layout: Layout, items?: any) => {
 
 const EventRow = (props: Props) => {
   return (
-    <div className="ev-event-row">
-      <h3>{props.label}</h3>
-      <div className="row">{render(props.layout, props.items)}</div>
+    <div className="mb-8">
+      <h3 className="text-2xl">{props.label}</h3>
+      <div className="flex items-center flex-no-wrap my-8 overflow-x-auto">
+        {Event(props.layout, props.items)}
+      </div>
     </div>
   );
 };
