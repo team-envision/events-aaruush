@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+
 import "./Navbar.scss";
-import classNames from "classnames";
 import logo from "../../../assets/images/logo.png";
 
 const Navbar = () => {
@@ -10,12 +10,6 @@ const Navbar = () => {
         <figure>
           <img src={logo} alt="logo" />
         </figure>
-        <ul>
-          <li className={classNames({ active: true })}>Upcoming</li>
-          <li>Recent</li>
-          <li>Directory of events</li>
-          <li>My events</li>
-        </ul>
       </div>
       <div></div>
     </div>
