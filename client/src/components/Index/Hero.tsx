@@ -186,7 +186,7 @@ const Home = () => {
             type="video/mp4"
           />
         </video>
-        <div className="absolute w-full lg:w-2/5 top-40 lg:top-50 left-0 lg:left-10 z-50 px-5 lg:px-0 text-center lg:text-left">
+        <div className="absolute w-full lg:w-2/5 top-40 lg:top-50 left-0 lg:left-10 z-40 px-5 lg:px-0 text-center lg:text-left">
           <h2 className="text-3xl lg:text-4xl font-bold text-left">
             Common Registration
           </h2>
