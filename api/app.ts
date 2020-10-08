@@ -22,6 +22,7 @@ const app: Express = express();
 const whitelist = ["https://aaruush.org", "https://googleapis.com"];
 const corsOptions: CorsOptions = {
   origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
     if (whitelist.indexOf(origin!) !== -1) {
       callback(null, true);
     } else {
@@ -35,29 +36,8 @@ if (process.env.NODE_ENV === "production") {
     helmet({
       contentSecurityPolicy: {
         directives: {
-          defaultSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "https://fonts.googleapis.com",
-            "https://fonts.gstatic.com",
-          ],
+          defaultSrc: ["'self'", "'unsafe-inline'", "* https:"],
           scriptSrc: ["'self'", "'unsafe-inline'"],
-          styleSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "https://fonts.googleapis.com",
-            "https://fonts.gstatic.com",
-          ],
-          fontSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "https://fonts.googleapis.com",
-            "https://fonts.gstatic.com",
-          ],
-          imgSrc: [
-            "'self'",
-            "data: blob: https://aaruush20-assets.s3.ap-south-1.amazonaws.com",
-          ],
         },
       },
     })
