@@ -1,61 +1,26 @@
 div.ev-event-shot {
-  $width: 18rem;
+  $width: 10rem;
   $scale: 1.1;
-  position: relative;
-  max-width: $width * 16/9;
+  max-width: $width * 16 / 9;
   max-height: $width;
   transition: 0.2s all ease-in-out;
   transition-delay: 200ms;
-  cursor: pointer;
-  overflow: hidden;
-
-  img {
-    height: 100%;
-    width: auto;
-    object-fit: cover;
-    object-position: center;
-  }
-
   &:hover {
-    max-width: $width * $scale * 16/9;
+    max-width: $width * $scale * 16 / 9;
     max-height: $width * $scale;
-
     & > div {
       opacity: 1;
     }
   }
-
   & > div {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    position: absolute;
     transition: 0.2s all ease-in-out;
     transition-delay: 200ms;
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.6) 33%);
-
     div.content {
       bottom: 1rem;
       left: 1rem;
       right: 1rem;
-      position: absolute;
-
-      h4 {
-        margin-bottom: 0.5rem;
-        margin-top: 2rem;
-      }
-
-      a.ev-button {
-        display: inline-block !important;
-      }
-
       ul {
-        list-style: none;
-        display: flex;
-        margin-top: 1rem;
-
         li {
           &::after {
             content: "•";
@@ -63,12 +28,24 @@ div.ev-event-shot {
             margin: 0 0.2rem;
             opacity: 0.5;
           }
-
           &:last-child::after {
             display: none;
           }
         }
       }
+    }
+  }
+}
+
+@media (min-width: 991px) {
+  div.ev-event-shot {
+    $width: 18rem;
+    $scale: 1.1;
+    max-width: $width * 16 / 9;
+    max-height: $width;
+    &:hover {
+      max-width: $width * $scale * 16 / 9;
+      max-height: $width * $scale;
     }
   }
 }

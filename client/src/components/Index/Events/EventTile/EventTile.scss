@@ -1,47 +1,38 @@
 div.ev-event-tile {
-  $width: 22rem;
+  $width: 14rem;
   $scale: 1.2;
-  position: relative;
   max-width: $width;
   max-height: $width * 3 /4;
   transition: 0.2s all ease-in-out;
   transition-delay: 200ms;
-  cursor: pointer;
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-
   & > div {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    position: absolute;
     transition: 0.2s all ease-in-out;
     transition-delay: 200ms;
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.6) 33%);
-
     div.content {
       bottom: 1rem;
       left: 1rem;
-      width: 80%;
-      position: absolute;
-
-      h4 {
-        margin-bottom: 0.5rem;
-      }
     }
   }
-
   &:hover {
     max-width: $width * $scale;
     max-height: $width * $scale * 3 / 4;
 
     & > div {
       opacity: 1;
+    }
+  }
+}
+
+@media (min-width: 991px) {
+  div.ev-event-tile {
+    $width: 22rem;
+    $scale: 1.2;
+    max-width: $width;
+    max-height: $width * 3 /4;
+    &:hover {
+      max-width: $width * $scale;
+      max-height: $width * $scale * 3 / 4;
     }
   }
 }

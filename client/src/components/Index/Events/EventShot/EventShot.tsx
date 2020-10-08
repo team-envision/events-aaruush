@@ -17,13 +17,17 @@ const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
   };
 
   return (
-    <div className="ev-event-shot">
+    <div className="ev-event-shot relative overflow-hidden cursor-pointer">
       <figure>
-        <img src={thumbnail_url} alt="Kitten" />
+        <img
+          src={thumbnail_url}
+          alt="Kitten"
+          className="h-full w-auto object-cover object-center"
+        />
       </figure>
-      <div>
-        <div className="content">
-          <div className="flex flex-wrap w-7/12">
+      <div className="w-full h-full top-0 left-0 opacity-0 absolute">
+        <div className="content absolute">
+          <div className="flex flex-wrap w-3/4 lg:w-7/12">
             <button
               className="flex w-1/2 h-12 rounded-lg m-auto bg-baseWhite text-baseBlack focus:outline-none"
               onClick={eventClickhandler}
@@ -34,14 +38,14 @@ const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
               <FaInfoCircle className="m-auto text-lg" />
             </button>
           </div>
-          <h4 className="text-xl font-bold">{title}</h4>
-          <p className="text-base">
+          <h4 className="text-xl font-bold mt-3">{title}</h4>
+          <p className="hidden lg:block text-base">
             {description.length > 100
               ? `${description.trim().substring(0, 100)}...`
               : description}
           </p>
           {tags && (
-            <ul>
+            <ul className="hidden lg:flex list-none mt-4">
               {tags?.map((tag) => {
                 return <li key={tag}>{tag}</li>;
               })}

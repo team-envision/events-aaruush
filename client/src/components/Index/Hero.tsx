@@ -186,8 +186,10 @@ const Home = () => {
             type="video/mp4"
           />
         </video>
-        <div className="absolute w-11/12 lg:w-2/5 top-30 lg:top-50 left-0 lg:left-10 z-50">
-          <h2 className="text-3xl lg:text-4xl">Common Registration</h2>
+        <div className="absolute w-full lg:w-2/5 top-40 lg:top-50 left-0 lg:left-10 z-50 px-5 lg:px-0 text-center lg:text-left">
+          <h2 className="text-3xl lg:text-4xl font-bold text-left">
+            Common Registration
+          </h2>
           <p className="text-base lg:text-lg text-justify w-full">
             5 Days of Technological Extravaganza Participate in an array of
             experiences inclusive of Domain Events, Luminary Addresses,
@@ -196,13 +198,15 @@ const Home = () => {
             access to Special Aaruush Evenings and Aaruush Nites!
           </p>
           <div className="flex flex-wrap text-xl w-full lg:w-2/3 mt-8">
-            <button className="w-2/5 my-auto mr-auto rounded-lg bg-baseWhite text-baseBlack py-4 px-6">
+            <button className="w-3/4 md:w-1/2 lg:w-3/5 my-auto mr-auto rounded-lg bg-baseWhite text-baseBlack py-4 px-6">
               <a
                 href="https://aaruush.org/register"
                 className="flex flex-wrap m-auto w-full"
               >
                 <Magic className="m-auto text-xl" />
-                <span className="m-auto">Register Now !</span>
+                <span className="m-auto small-caps font-bold">
+                  Register Now !
+                </span>
               </a>
             </button>
             {/* <button className="w-2/5 my-auto ml-auto rounded-lg bg-baseBlack text-baseWhite py-4 px-6">

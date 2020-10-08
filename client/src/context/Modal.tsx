@@ -20,7 +20,7 @@ const ModalContextProvider = (props: any) => {
   const Backdrop = () => {
     return (
       <div
-        className="fixed bg-black bg-opacity-75 w-screen h-screen top-0 z-40"
+        className="fixed bg-black lg:bg-opacity-75 w-screen h-screen top-0 z-40"
         onClick={() => setIsOpen(!isOpen)}
       />
     );
@@ -30,13 +30,13 @@ const ModalContextProvider = (props: any) => {
     return (
       <>
         <Backdrop />
-        <div className="fixed bg-transparent flex flex-wrap m-auto overflow-y-scroll max-h-screen w-10/12 top-10 bottom-0 right-0 left-0 z-50">
-          <div className="relative m-auto pb-20">
+        <div className="fixed bg-transparent flex flex-wrap m-auto overflow-y-scroll max-h-screen w-10/12 top-0 lg:top-10 bottom-0 right-0 left-0 z-50">
+          <div className="lg:relative m-auto pb-20">
             <AiFillCloseCircle
               onClick={() => setIsOpen(!isOpen)}
-              className="cursor-pointer absolute text-5xl mr-4 mt-4 top-0 right-0 text-baseBlack bg-baseWhite rounded-full"
+              className="cursor-pointer ml-auto lg:absolute text-5xl lg:mr-4 mt-4 top-0 right-0 text-baseBlack bg-baseWhite rounded-full"
             />
-            <div className="w-full h-80vh text-center">
+            <div className="w-full h-auto lg:h-80vh text-center mt-4 lg:mt-0">
               <img
                 src={modalImg}
                 alt={modalTitle}
@@ -58,9 +58,11 @@ const ModalContextProvider = (props: any) => {
                   ))}
               </div> */}
               <div className="w-full flex flex-wrap mt-5">
-                <div className="w-7/12 my-auto mr-auto">{modalDesc}</div>
-                <div className="my-auto ml-auto text-center">
-                  <button className="px-6 py-4 mr-10 bg-green-600 rounded-lg focus:outline-none text-xl font-bold">
+                <div className="w-full lg:w-7/12 my-auto mr-auto">
+                  {modalDesc}
+                </div>
+                <div className="w-full lg:w-auto my-auto ml-auto text-center">
+                  <button className="px-6 py-4 lg:mr-10 mt-4 lg:mt-0 bg-green-600 rounded-lg focus:outline-none text-xl font-bold">
                     Register Now!
                   </button>
                 </div>
