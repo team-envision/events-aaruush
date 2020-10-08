@@ -28,6 +28,8 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    margin: ["first"],
+  },
   plugins: [],
 };

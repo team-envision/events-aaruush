@@ -61,12 +61,14 @@ const Event = (layout: Layout, items?: any) => {
 
 const EventRow = (props: Props) => {
   return (
-    <div className="mb-20">
-      {props.label && <h3 className="text-3xl">{props.label}</h3>}
+    <>
+      {props.label && (
+        <h3 className="text-3xl first:mt-0 mt-20">{props.label}</h3>
+      )}
       <div className="flex items-center flex-no-wrap my-8 overflow-x-auto">
         {Event(props.layout, props.items)}
       </div>
-    </div>
+    </>
   );
 };
 
