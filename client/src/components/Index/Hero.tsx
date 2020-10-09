@@ -50,7 +50,7 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="flex flex-wrap m-auto w-full">
+              <button className="flex flex-wrap m-auto w-full focus:outline-none">
                 <FaMagic className="m-auto text-xl" />
                 <span className="m-auto small-caps font-bold">
                   Register Now !
