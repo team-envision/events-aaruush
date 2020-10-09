@@ -72,9 +72,10 @@ const Home = () => {
           label="Aaruush Days"
           items={events.filter((event) => event.category === EventTypes.Days)}
         />
+
         <EventRow
           layout={Layout.jumbotron}
-          label="Nites & Live"
+          label="Highlights"
           items={events.filter(
             (event) => event.category === EventTypes.Highlights
           )}
@@ -85,28 +86,30 @@ const Home = () => {
             (event) => event.category === EventTypes.Highlights
           )}
         />
-        <EventRow
-          layout={Layout.jumbotron}
-          label="Workshops"
-          items={events.filter(
-            (event) => event.category === EventTypes.Challenges
-          )}
-        />
-        <EventRow
-          layout={Layout.shot}
-          items={events.filter(
-            (event) => event.category === EventTypes.Challenges
-          )}
-        />
+
         <EventRow
           layout={Layout.jumbotron}
           label="Challenges"
+          items={events.filter(
+            (event) => event.category === EventTypes.Challenges
+          )}
+        />
+        <EventRow
+          layout={Layout.tile}
+          items={events.filter(
+            (event) => event.category === EventTypes.Challenges
+          )}
+        />
+
+        <EventRow
+          layout={Layout.jumbotron}
+          label="Workshops"
           items={events.filter(
             (event) => event.category === EventTypes.Workshops
           )}
         />
         <EventRow
-          layout={Layout.shot}
+          layout={Layout.tile}
           items={events.filter(
             (event) => event.category === EventTypes.Workshops
           )}

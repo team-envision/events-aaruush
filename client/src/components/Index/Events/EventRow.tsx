@@ -59,43 +59,43 @@ const Event = (layout: Layout, items: Item[]) => {
     case Layout.tile:
       return (
         <>
-          {items.map((item: Item) => (
-            <div className="flex flex-grow flex-shrink-0 mr-4" key={item._id}>
-              <EventTile {...item} />
-            </div>
-          ))}
+          {items.length !== 0 &&
+            items.map((item: Item) => (
+              <div className="flex flex-grow flex-shrink-0 mr-4" key={item._id}>
+                <EventTile {...item} />
+              </div>
+            ))}
         </>
       );
 
     case Layout.shot:
       return (
         <>
-          {items.map((item: Item) => (
-            <div className="flex flex-grow flex-shrink-0 mr-4" key={item._id}>
-              <EventShot {...item} />
-            </div>
-          ))}
+          {items.length !== 0 &&
+            items.map((item: Item) => (
+              <div className="flex flex-grow flex-shrink-0 mr-4" key={item._id}>
+                <EventShot {...item} />
+              </div>
+            ))}
         </>
       );
 
     case Layout.jumbotron:
-      return (
-        <>
-          <EventJumbotron {...items[0]} />
-        </>
-      );
+      return <>{items.length !== 0 && <EventJumbotron {...items[0]} />}</>;
   }
 };
 
 const EventRow = (props: Props) => {
   return (
     <>
-      {props.label && (
+      {props.label && props.items.length !== 0 && (
         <h3 className="text-3xl first:mt-0 mt-20">{props.label}</h3>
       )}
-      <div className="flex items-center flex-no-wrap my-8 overflow-x-auto">
-        {Event(props.layout, props.items)}
-      </div>
+      {props.items.length !== 0 && (
+        <div className="flex items-center flex-no-wrap my-8 overflow-x-auto">
+          {Event(props.layout, props.items)}
+        </div>
+      )}
     </>
   );
 };
