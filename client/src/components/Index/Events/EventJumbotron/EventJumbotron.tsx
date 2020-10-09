@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { FaMagic, FaInfoCircle } from "react-icons/fa";
 
-import { EventProps } from "../EventRow";
+import { Item } from "../EventRow";
 import { ModalContext } from "../../../../context/Modal";
 
-const EventJumbotron = (props: EventProps) => {
+const EventJumbotron = (props: Item) => {
   const modalContext = useContext(ModalContext);
 
   const eventClickhandler = () => {
-    modalContext.setModalImg(props.thumbnail_url);
-    modalContext.setModalTitle(props.title);
+    modalContext.setModalImg(props.poster);
+    modalContext.setModalTitle(props.name);
     modalContext.setModalTags(props.tags);
     modalContext.setModalDesc(props.description);
     modalContext.setIsOpen(!modalContext.isOpen);
@@ -19,12 +19,14 @@ const EventJumbotron = (props: EventProps) => {
     <div className="flex flex-wrap">
       <div className="w-full lg:w-3/5 my-auto">
         <figure>
-          <img src={props.thumbnail_url[0]} alt="Kitten" width="100%" />
+          {props.poster && (
+            <img src={props.poster[0]} alt="Kitten" width="100%" />
+          )}
         </figure>
       </div>
       <div className="flex flex-wrap w-full lg:w-2/5 my-auto lg:px-10 lg:text-center">
         <div className="w-full mt-5 lg:mt-auto">
-          <h4 className="text-xl font-bold">{props.title}</h4>
+          <h4 className="text-xl font-bold">{props.name}</h4>
           <p className="text-base my-2">{props.description}</p>
         </div>
         <div className="flex flex-wrap w-full mt-6">

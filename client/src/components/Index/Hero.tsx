@@ -1,190 +1,22 @@
-import React from "react";
-import { FaMagic as Magic } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaMagic } from "react-icons/fa";
 
-import EventRow from "./Events/EventRow";
-import { Layout } from "./Events/EventRow";
+import APIservice from "../../services/axios";
+import EventRow, { EventTypes, Layout, Item } from "./Events/EventRow";
 
 const Home = () => {
-  const days = [
-    {
-      title: "Ex culpa quis officia officia irure.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description:
-        "Minim esse dolore dolore ea irure tempor commodo in aliquip. Anim consectetur tempor commodo quis non. Officia fugiat pariatur esse proident Lorem deserunt mollit dolor ut aliqua eiusmod. Eiusmod minim minim ea Lorem sit. Dolore exercitation consequat amet dolore aute et officia.",
-      tags: ["A", "B", "TAGGSGGSGSG"],
-    },
-    {
-      title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: [
-        "https://workmacro.com/wp-content/uploads/2018/02/4-by-3-1024x768.png",
-      ],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-  ];
+  const [events, setEvents] = useState<Item[]>([]);
 
-  const items = [
-    {
-      title: "TEST Ex culpa quis officia officia irure.",
-      thumbnail_url: [
-        "https://lorempixel.com/1920/1080/nature/2/",
-        "https://lorempixel.com/1920/1080/nature/2/",
-        "https://lorempixel.com/1920/1080/nature/2/",
-        "https://lorempixel.com/1920/1080/nature/2/",
-      ],
-      description:
-        "Minim esse dolore dolore ea irure tempor commodo in aliquip. Anim consectetur tempor commodo quis non. Officia fugiat pariatur esse proident Lorem deserunt mollit dolor ut aliqua eiusmod. Eiusmod minim minim ea Lorem sit. Dolore exercitation consequat amet dolore aute et officia.",
-      tags: ["A", "B", "TAGGSGGSGSG"],
-    },
-    {
-      title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/1/"],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: ["https://lorempixel.com/1920/1080/city/2/"],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: ["https://lorempixel.com/1920/1080/city/2/"],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["https://lorempixel.com/1920/1080/sports/3/"],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-  ];
-
-  const items2 = [
-    {
-      title: "Ex culpa quis officia officia irure.",
-      thumbnail_url: ["https://lorempixel.com/1080/1920/nature/2/"],
-      description: "Labore ex mollit Lorem sit.",
-      tags: ["Something", "Event"],
-    },
-    {
-      title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: ["https://lorempixel.com/1080/1920/sports/1/"],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Reprehenderit pariatur adipisicing sunt occaecat tempor.",
-      thumbnail_url: ["https://lorempixel.com/1080/1920/sports/1/"],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Aliqua adipisicing laborum nulla et.",
-      thumbnail_url: ["https://lorempixel.com/1080/1920/city/2/"],
-      description:
-        "Labore ex mollit Lorem sit cillum magna ipsum labore veniam.",
-      tags: ["A", "B"],
-    },
-    {
-      title: "Esse proident eiusmod in ea id.",
-      thumbnail_url: ["https://lorempixel.com/1080/1920/sports/3/"],
-      description: "Labore ex mollit Lorem sit cillum.",
-      tags: ["A", "B"],
-    },
-  ];
+  useEffect(() => {
+    APIservice.get("/events")
+      .then((res) => {
+        setEvents(res.data.events);
+        console.log(res.data.events);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [APIservice]);
 
   return (
     <div className="flex flex-wrap">
@@ -217,7 +49,7 @@ const Home = () => {
               className="w-3/4 md:w-1/2 lg:w-3/5 my-auto mr-auto rounded-lg bg-baseWhite text-baseBlack py-4 px-6"
             >
               <button className="flex flex-wrap m-auto w-full">
-                <Magic className="m-auto text-xl" />
+                <FaMagic className="m-auto text-xl" />
                 <span className="m-auto small-caps font-bold">
                   Register Now !
                 </span>
@@ -233,17 +65,50 @@ const Home = () => {
         </div>
       </div>
       <div className="w-3/4 mx-auto mt-10">
-        <EventRow layout={Layout.tile} label="Aaruush Days" items={days} />
+        <EventRow
+          layout={Layout.tile}
+          label="Aaruush Days"
+          items={events.filter((event) => event.category === EventTypes.Days)}
+        />
         <EventRow
           layout={Layout.jumbotron}
           label="Nites & Live"
-          items={items}
+          items={events.filter(
+            (event) => event.category === EventTypes.Highlights
+          )}
         />
-        <EventRow layout={Layout.shot} items={items} />
-        <EventRow layout={Layout.jumbotron} label="Workshops" items={items} />
-        <EventRow layout={Layout.shot} items={items} />
-        <EventRow layout={Layout.jumbotron} label="Challenges" items={items} />
-        <EventRow layout={Layout.shot} items={items2} />
+        <EventRow
+          layout={Layout.shot}
+          items={events.filter(
+            (event) => event.category === EventTypes.Highlights
+          )}
+        />
+        <EventRow
+          layout={Layout.jumbotron}
+          label="Workshops"
+          items={events.filter(
+            (event) => event.category === EventTypes.Challenges
+          )}
+        />
+        <EventRow
+          layout={Layout.shot}
+          items={events.filter(
+            (event) => event.category === EventTypes.Challenges
+          )}
+        />
+        <EventRow
+          layout={Layout.jumbotron}
+          label="Challenges"
+          items={events.filter(
+            (event) => event.category === EventTypes.Workshops
+          )}
+        />
+        <EventRow
+          layout={Layout.shot}
+          items={events.filter(
+            (event) => event.category === EventTypes.Workshops
+          )}
+        />
       </div>
     </div>
   );

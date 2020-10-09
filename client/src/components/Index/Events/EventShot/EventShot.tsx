@@ -3,16 +3,16 @@ import { FaMagic, FaInfoCircle } from "react-icons/fa";
 
 import "./EventShot.scss";
 import { ModalContext } from "../../../../context/Modal";
-import { EventProps } from "../EventRow";
+import { Item } from "../EventRow";
 
-const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
+const EventShot = (props: Item) => {
   const modalContext = useContext(ModalContext);
 
   const eventClickhandler = () => {
-    modalContext.setModalImg(thumbnail_url);
-    modalContext.setModalTitle(title);
-    modalContext.setModalTags(tags);
-    modalContext.setModalDesc(description);
+    modalContext.setModalImg(props.poster);
+    modalContext.setModalTitle(props.name);
+    modalContext.setModalTags(props.tags);
+    modalContext.setModalDesc(props.description);
     modalContext.setIsOpen(!modalContext.isOpen);
   };
 
@@ -20,9 +20,9 @@ const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
     <div className="ev-event-shot relative overflow-hidden cursor-pointer">
       <figure>
         <img
-          src={thumbnail_url[0]}
+          src={props.poster[0]}
           alt="Kitten"
-          className="h-full w-auto object-cover object-center"
+          className="h-full w-full object-cover object-center"
         />
       </figure>
       <div className="w-full h-full top-0 left-0 opacity-0 absolute">
@@ -38,19 +38,17 @@ const EventShot = ({ title, thumbnail_url, description, tags }: EventProps) => {
               <FaInfoCircle className="m-auto text-lg" />
             </button>
           </div>
-          <h4 className="text-xl font-bold mt-3">{title}</h4>
+          <h4 className="text-xl font-bold mt-3">{props.name}</h4>
           <p className="hidden lg:block text-base">
-            {description.length > 100
-              ? `${description.trim().substring(0, 100)}...`
-              : description}
+            {props.description.length > 100
+              ? `${props.description.trim().substring(0, 100)}...`
+              : props.description}
           </p>
-          {tags && (
-            <ul className="hidden lg:flex list-none mt-4">
-              {tags?.map((tag: string, index: number) => {
-                return <li key={index.toString()}>{tag}</li>;
-              })}
-            </ul>
-          )}
+          <ul className="hidden lg:flex list-none mt-4">
+            {props.tags?.map((tag: string, index: number) => {
+              return <li key={index.toString()}>{tag}</li>;
+            })}
+          </ul>
         </div>
       </div>
     </div>

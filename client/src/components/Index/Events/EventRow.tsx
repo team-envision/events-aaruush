@@ -10,10 +10,21 @@ export enum Layout {
   shot = "shot",
 }
 
-interface Item {
-  title: string;
-  thumbnail_url: string[];
+export enum EventTypes {
+  Days = "aaruush-days",
+  Challenges = "challenges",
+  Workshops = "workshops",
+  Highlights = "highlights",
+}
+
+export interface Item {
+  _id: string;
   tags?: string[];
+  category: EventTypes;
+  name: string;
+  date: string;
+  poster: string[];
+  slug: string;
   description: string;
 }
 
@@ -21,13 +32,6 @@ interface Props {
   label?: string;
   layout: Layout;
   items: Item[];
-}
-
-export interface EventProps {
-  title: string;
-  thumbnail_url: string[];
-  description: string;
-  tags?: string[];
 }
 
 const Event = (layout: Layout, items: Item[]) => {

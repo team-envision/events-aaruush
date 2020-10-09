@@ -3,23 +3,23 @@ import { FaMagic, FaInfoCircle } from "react-icons/fa";
 
 import "./EventTile.scss";
 import { ModalContext } from "../../../../context/Modal";
-import { EventProps } from "../EventRow";
+import { Item } from "../EventRow";
 
-const EventTile = ({ title, thumbnail_url, description, tags }: EventProps) => {
+const EventTile = (props: Item) => {
   const modalContext = useContext(ModalContext);
 
   const eventClickhandler = () => {
-    modalContext.setModalImg(thumbnail_url);
-    modalContext.setModalTitle(title);
-    modalContext.setModalTags(tags);
-    modalContext.setModalDesc(description);
+    modalContext.setModalImg(props.poster);
+    modalContext.setModalTitle(props.name);
+    modalContext.setModalTags(props.tags);
+    modalContext.setModalDesc(props.description);
     modalContext.setIsOpen(!modalContext.isOpen);
   };
 
   return (
     <div className="ev-event-tile relative cursor-pointer">
       <figure>
-        <img src={thumbnail_url[0]} alt="Kitten" className="w-full h-auto" />
+        <img src={props.poster[0]} alt="Kitten" className="w-full h-auto" />
       </figure>
       <div className="absolute w-full h-full top-0 left-0 opacity-0">
         <div className="content w-11/12 lg:w-4/5 absolute">
@@ -34,11 +34,11 @@ const EventTile = ({ title, thumbnail_url, description, tags }: EventProps) => {
               <FaInfoCircle className="m-auto text-lg" />
             </button>
           </div>
-          <h4 className="text-xl font-bold mb-2">{title}</h4>
+          <h4 className="text-xl font-bold mb-2">{props.name}</h4>
           <p className="text-base hidden lg:block">
-            {description.length > 150
-              ? `${description.trim().substring(0, 150)}...`
-              : description}
+            {props.description.length > 150
+              ? `${props.description.trim().substring(0, 150)}...`
+              : props.description}
           </p>
         </div>
       </div>
