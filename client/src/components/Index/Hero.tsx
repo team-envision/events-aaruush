@@ -47,6 +47,8 @@ const Home = () => {
             <a
               href="https://aaruush.org/register"
               className="w-3/4 md:w-1/2 lg:w-3/5 my-auto mr-auto rounded-lg bg-baseWhite text-baseBlack py-4 px-6"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <button className="flex flex-wrap m-auto w-full">
                 <FaMagic className="m-auto text-xl" />
