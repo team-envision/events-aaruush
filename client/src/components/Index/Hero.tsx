@@ -67,53 +67,60 @@ const Home = () => {
         </div>
       </div>
       <div className="w-3/4 mx-auto mt-10">
-        <EventRow
-          layout={Layout.tile}
-          label="Aaruush Days"
-          items={events.filter((event) => event.category === EventTypes.Days)}
-        />
+        {console.log(events)}
+        {events.length !== 0 && (
+          <>
+            <EventRow
+              layout={Layout.tile}
+              label="Aaruush Days"
+              items={events.filter(
+                (event) => event.category === EventTypes.Days
+              )}
+            />
 
-        <EventRow
-          layout={Layout.jumbotron}
-          label="Highlights"
-          items={events.filter(
-            (event) => event.category === EventTypes.Highlights
-          )}
-        />
-        <EventRow
-          layout={Layout.shot}
-          items={events.filter(
-            (event) => event.category === EventTypes.Highlights
-          )}
-        />
+            <EventRow
+              layout={Layout.jumbotron}
+              label="Highlights"
+              items={events.filter(
+                (event) => event.category === EventTypes.Highlights
+              )}
+            />
+            <EventRow
+              layout={Layout.shot}
+              items={events.filter(
+                (event) => event.category === EventTypes.Highlights
+              )}
+            />
 
-        <EventRow
-          layout={Layout.jumbotron}
-          label="Challenges"
-          items={events.filter(
-            (event) => event.category === EventTypes.Challenges
-          )}
-        />
-        <EventRow
-          layout={Layout.tile}
-          items={events.filter(
-            (event) => event.category === EventTypes.Challenges
-          )}
-        />
+            <EventRow
+              layout={Layout.jumbotron}
+              label="Challenges"
+              items={events.filter(
+                (event) => event.category === EventTypes.Challenges
+              )}
+            />
+            <EventRow
+              layout={Layout.tile}
+              items={events.filter(
+                (event) => event.category === EventTypes.Challenges
+              )}
+            />
 
-        <EventRow
-          layout={Layout.jumbotron}
-          label="Workshops"
-          items={events.filter(
-            (event) => event.category === EventTypes.Workshops
-          )}
-        />
-        <EventRow
-          layout={Layout.tile}
-          items={events.filter(
-            (event) => event.category === EventTypes.Workshops
-          )}
-        />
+            <EventRow
+              layout={Layout.jumbotron}
+              label="Workshops"
+              items={events.filter(
+                (event) => event.category === EventTypes.Workshops
+              )}
+            />
+            <EventRow
+              layout={Layout.tile}
+              items={events.filter(
+                (event) => event.category === EventTypes.Workshops
+              )}
+            />
+          </>
+        )}
       </div>
     </div>
   );

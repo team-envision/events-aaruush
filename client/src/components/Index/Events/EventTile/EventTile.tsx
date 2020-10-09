@@ -21,9 +21,11 @@ const EventTile = (props: Item) => {
 
   return (
     <div className="ev-event-tile relative cursor-pointer">
-      <figure>
-        <img src={props.poster[0]} alt="Kitten" className="w-full h-auto" />
-      </figure>
+      {props.poster && props.poster.length !== 0 && (
+        <figure>
+          <img src={props.poster[0]} alt="Kitten" className="w-full h-auto" />
+        </figure>
+      )}
       <div className="absolute w-full h-full top-0 left-0 opacity-0">
         <div className="content w-11/12 lg:w-4/5 absolute">
           <div className="flex flex-wrap w-3/4 lg:w-7/12">

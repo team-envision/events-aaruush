@@ -22,11 +22,11 @@ const EventJumbotron = (props: Item) => {
   return (
     <div className="flex flex-wrap">
       <div className="w-full lg:w-3/5 my-auto">
-        <figure>
-          {props.poster && (
+        {props.poster && props.poster.length !== 0 && (
+          <figure>
             <img src={props.poster[0]} alt="Kitten" width="100%" />
-          )}
-        </figure>
+          </figure>
+        )}
       </div>
       <div className="content flex flex-wrap w-full lg:w-2/5 my-auto lg:px-10 lg:text-center">
         <div className="w-full mt-5 lg:mt-auto">
