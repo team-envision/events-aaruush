@@ -6,7 +6,7 @@ import envision from "../../assets/Shared/envisionLogo.png";
 
 const Hero = () => {
   return (
-    <div className="flex flex-wrap bg-black text-white w-screen h-screen text-center">
+    <div className="flex flex-wrap bg-black text-white w-full h-screen text-center">
       <div className="m-auto">
         <h1 className="text-7xl lg:text-9xl font-bold">Oops!</h1>
         <h4 className="text-xl lg:text-3xl my-10 font-semibold">

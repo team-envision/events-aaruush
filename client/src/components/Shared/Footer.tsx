@@ -106,7 +106,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className="w-full bg-black py-10 text-white mt-10">
+    <div className="w-full bg-black py-10 text-white">
       <div className="flex flex-wrap w-10/12 mx-auto">
         <div className="flex flex-wrap w-full lg:w-1/5 mx-auto mb-auto mt-5 lg:mt-0">
           <h3 className="w-full text-3xl mb-6">Aaruush</h3>
