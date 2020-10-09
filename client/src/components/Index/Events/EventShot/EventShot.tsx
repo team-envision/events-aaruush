@@ -25,7 +25,7 @@ const EventShot = (props: Item) => {
         <figure>
           <img
             src={props.poster[0]}
-            alt="Kitten"
+            alt={props.name}
             className="h-full w-full object-cover object-center"
           />
         </figure>

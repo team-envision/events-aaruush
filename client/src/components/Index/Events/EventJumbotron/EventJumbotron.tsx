@@ -24,7 +24,7 @@ const EventJumbotron = (props: Item) => {
       <div className="w-full lg:w-3/5 my-auto">
         {props.poster && props.poster.length !== 0 && (
           <figure>
-            <img src={props.poster[0]} alt="Kitten" width="100%" />
+            <img src={props.poster[0]} alt={props.name} width="100%" />
           </figure>
         )}
       </div>

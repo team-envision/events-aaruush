@@ -91,7 +91,6 @@ const EventRow = (props: Props) => {
       {props.label && props.items.length !== 0 && (
         <h3 className="text-3xl first:mt-0 mt-20">{props.label}</h3>
       )}
-      {console.log(props.items)}
       {props.items.length !== 0 && (
         <div className="flex items-center flex-no-wrap my-8 overflow-x-auto">
           {Event(props.layout, props.items)}
