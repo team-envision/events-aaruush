@@ -11,7 +11,11 @@ import { errors } from "../error/error.constant";
 export const addEvent = async (input: EventPostRequest): Promise<void> => {
   let dbEntry: EventSchema = {
     ...{ ...input, date: new Date(input.date) },
-    slug: `${process.env.MONGO_DBNAME}-${slugify(input.name, { lower: true })}`,
+    slug: `${process.env.MONGO_DBNAME}-${slugify(input.name, {
+      lower: true,
+      remove: /[*+~.()'"!:@]/g,
+    })}`,
+    isActive: true,
     certificates: [],
   };
   const db = await DatabaseService.getInstance().getDb(
