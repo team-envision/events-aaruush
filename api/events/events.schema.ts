@@ -29,6 +29,7 @@ export interface EventSchema {
   poster: Array<string>;
   description: string;
   category: string;
+  isActive: boolean;
   link: string;
   certificates: Array<certSchema>;
 }
