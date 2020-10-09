@@ -37,7 +37,12 @@ if (process.env.NODE_ENV === "production") {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'", "'unsafe-inline'", "* https:"],
-          scriptSrc: ["'self'", "'unsafe-inline'"],
+          scriptSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            "https://www.googletagmanager.com/",
+            "https://www.google-analytics.com/",
+          ],
         },
       },
     })

@@ -1,3 +1,4 @@
+import { String } from "aws-sdk/clients/appstream";
 import React, { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
@@ -8,7 +9,8 @@ export const ModalContext = React.createContext({
   setIsOpen: (_isOpen: boolean) => {},
   setModalImg: (_modalImg: string[]) => {},
   setModalTitle: (_modalTitle: string) => {},
-  setModalTags: (_modalTags: string[] | undefined) => {},
+  setModalDate: (_modalDate: string[]) => {},
+  setModalLink: (_modalTags: string) => {},
   setModalDesc: (_modalDesc: string) => {},
 });
 
@@ -16,7 +18,8 @@ const ModalContextProvider = (props: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [modalImg, setModalImg] = useState<string[]>();
   const [modalTitle, setModalTitle] = useState<string>();
-  const [modalTags, setModalTags] = useState<string[] | undefined>();
+  const [modalDate, setModalDate] = useState<string[]>([]);
+  const [modalLink, setModalLink] = useState<string>();
   const [modalDesc, setModalDesc] = useState<string>();
 
   const Backdrop = () => {
@@ -40,26 +43,29 @@ const ModalContextProvider = (props: any) => {
             />
             <Carousel images={modalImg} />
             <div className="flex flex-wrap mt-5">
-              <div className="mr-auto text-3xl text-center">{modalTitle}</div>
-              {/* <div className="ml-auto">
-                {modalTags &&
-                  modalTags.map((tag: string, index:string) => (
-                    <span
-                      key={index.toString()}
-                      className="mr-8 px-5 py-2 bg-baseWhite rounded-lg text-baseBlack font-bold"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-              </div> */}
+              <div className="flex my-auto mr-auto text-3xl text-center">
+                {modalTitle}
+              </div>
+              <div className="flex flex-wrap w-full md:w-auto my-3 ml-auto">
+                {modalDate.map((tag: string) => (
+                  <div
+                    key={tag}
+                    className="mx-auto md:mr-4 px-5 py-2 bg-baseWhite rounded-lg text-baseBlack font-bold"
+                  >
+                    {tag}
+                  </div>
+                ))}
+              </div>
               <div className="w-full flex flex-wrap mt-5">
                 <div className="w-full lg:w-7/12 my-auto mr-auto">
                   {modalDesc}
                 </div>
                 <div className="w-full lg:w-auto my-auto ml-auto text-center">
-                  <button className="px-6 py-4 lg:mr-10 mt-4 lg:mt-0 bg-green-600 rounded-lg focus:outline-none text-xl font-bold">
-                    Register Now!
-                  </button>
+                  <a href={modalLink}>
+                    <button className="px-6 py-4 lg:mr-10 mt-4 lg:mt-0 bg-green-600 rounded-lg focus:outline-none text-xl font-bold">
+                      Register Now!
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -76,7 +82,8 @@ const ModalContextProvider = (props: any) => {
         setIsOpen,
         setModalTitle,
         setModalImg,
-        setModalTags,
+        setModalDate,
+        setModalLink,
         setModalDesc,
       }}
     >
