@@ -20,7 +20,7 @@ const CarouselComp = (props: CarouselProps) => {
     >
       <Slider>
         {props.images!.map((image, index) => (
-          <Slide index={index}>
+          <Slide index={index} key={index.toString()}>
             <div className="w-full h-auto lg:h-80vh text-center">
               <img
                 src={image}

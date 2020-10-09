@@ -1,4 +1,3 @@
-import { String } from "aws-sdk/clients/appstream";
 import React, { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
@@ -6,6 +5,7 @@ import Carousel from "../components/Shared/Carousel";
 
 export const ModalContext = React.createContext({
   isOpen: false,
+  setIsActive: (_isActive: boolean) => {},
   setIsOpen: (_isOpen: boolean) => {},
   setModalImg: (_modalImg: string[]) => {},
   setModalTitle: (_modalTitle: string) => {},
@@ -16,6 +16,7 @@ export const ModalContext = React.createContext({
 
 const ModalContextProvider = (props: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
   const [modalImg, setModalImg] = useState<string[]>();
   const [modalTitle, setModalTitle] = useState<string>();
   const [modalDate, setModalDate] = useState<string[]>([]);
@@ -61,11 +62,20 @@ const ModalContextProvider = (props: any) => {
                   {modalDesc}
                 </div>
                 <div className="w-full lg:w-auto my-auto ml-auto text-center">
-                  <a href={modalLink}>
-                    <button className="px-6 py-4 lg:mr-10 mt-4 lg:mt-0 bg-green-600 rounded-lg focus:outline-none text-xl font-bold">
-                      Register Now!
+                  {isActive ? (
+                    <a href={modalLink}>
+                      <button className="px-6 py-4 lg:mr-10 mt-4 lg:mt-0 rounded-lg focus:outline-none text-xl font-bold bg-green-600">
+                        "Register Now !"
+                      </button>
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="px-6 py-4 lg:mr-10 mt-4 lg:mt-0 rounded-lg focus:outline-none text-xl font-bold bg-red-600 cursor-not-allowed"
+                    >
+                      Registerations Closed.
                     </button>
-                  </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -79,6 +89,7 @@ const ModalContextProvider = (props: any) => {
     <ModalContext.Provider
       value={{
         isOpen,
+        setIsActive,
         setIsOpen,
         setModalTitle,
         setModalImg,
