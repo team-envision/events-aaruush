@@ -7,6 +7,7 @@ import "./tailwind.scss";
 import ModalContextProvider from "./context/Modal";
 import Navbar from "./components/Shared/Navbar";
 import App from "./App";
+import Footer from "./components/Shared/Footer";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
       <ModalContextProvider>
         <Navbar />
         <App />
+        <Footer />
       </ModalContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
