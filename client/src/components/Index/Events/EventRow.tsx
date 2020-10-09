@@ -19,13 +19,14 @@ export enum EventTypes {
 
 export interface Item {
   _id: string;
-  tags?: string[];
   category: EventTypes;
-  name: string;
   date: string;
-  poster: string[];
-  slug: string;
+  name: string;
   description: string;
+  poster: string[];
+  link: string;
+  slug: string;
+  tags?: string[];
 }
 
 interface Props {
@@ -34,16 +35,31 @@ interface Props {
   items: Item[];
 }
 
+export const createTime = (input: string) => {
+  const newDate = new Date(input);
+  return `${newDate.toLocaleTimeString("en-IN", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  })} - IST`;
+};
+
+export const createDate = (input: string) => {
+  const newDate = new Date(input);
+  return newDate.toLocaleDateString("en-IN", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
 const Event = (layout: Layout, items: Item[]) => {
   switch (layout) {
     case Layout.tile:
       return (
         <>
-          {items.map((item: Item, index: number) => (
-            <div
-              className="flex flex-grow flex-shrink-0 mr-4"
-              key={index.toString()}
-            >
+          {items.map((item: Item) => (
+            <div className="flex flex-grow flex-shrink-0 mr-4" key={item._id}>
               <EventTile {...item} />
             </div>
           ))}
@@ -53,11 +69,8 @@ const Event = (layout: Layout, items: Item[]) => {
     case Layout.shot:
       return (
         <>
-          {items.map((item: Item, index: number) => (
-            <div
-              className="flex flex-grow flex-shrink-0 mr-4"
-              key={index.toString()}
-            >
+          {items.map((item: Item) => (
+            <div className="flex flex-grow flex-shrink-0 mr-4" key={item._id}>
               <EventShot {...item} />
             </div>
           ))}

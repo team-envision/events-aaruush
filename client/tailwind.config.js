@@ -32,6 +32,9 @@ module.exports = {
         "80vh": "80vh",
         "90vh": "90vh",
       },
+      boxShadow: {
+        jumbotronInfo: "0 0 15px 0 rgba(0, 0, 0, 0.75)",
+      },
     },
   },
   variants: {

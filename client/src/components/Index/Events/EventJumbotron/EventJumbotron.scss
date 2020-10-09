@@ -1,0 +1,15 @@
+div.content {
+  ul {
+    li {
+      &::after {
+        content: "•";
+        display: inline-block;
+        margin: 0 0.2rem;
+        opacity: 0.5;
+      }
+      &:last-child::after {
+        display: none;
+      }
+    }
+  }
+}

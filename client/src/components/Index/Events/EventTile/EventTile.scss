@@ -12,6 +12,19 @@ div.ev-event-tile {
     div.content {
       bottom: 1rem;
       left: 1rem;
+      ul {
+        li {
+          &::after {
+            content: "•";
+            display: inline-block;
+            margin: 0 0.2rem;
+            opacity: 0.5;
+          }
+          &:last-child::after {
+            display: none;
+          }
+        }
+      }
     }
   }
   &:hover {

@@ -11,7 +11,6 @@ const Home = () => {
     APIservice.get("/events")
       .then((res) => {
         setEvents(res.data.events);
-        console.log(res.data.events);
       })
       .catch((err) => {
         console.log(err);
