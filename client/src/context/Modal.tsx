@@ -73,7 +73,7 @@ const ModalContextProvider = (props: any) => {
                       disabled
                       className="px-6 py-4 lg:mr-10 mt-4 lg:mt-0 rounded-lg focus:outline-none text-xl font-bold bg-red-600 cursor-not-allowed"
                     >
-                      Registerations Closed.
+                      Registrations Closed.
                     </button>
                   )}
                 </div>
