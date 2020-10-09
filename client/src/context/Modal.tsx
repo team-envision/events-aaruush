@@ -47,7 +47,7 @@ const ModalContextProvider = (props: any) => {
               <div className="flex my-auto mr-auto text-3xl text-center">
                 {modalTitle}
               </div>
-              <div className="flex flex-wrap w-full md:w-auto my-3 ml-auto">
+              <div className="flex flex-wrap w-full md:w-auto my-3 ml-auto cursor-default">
                 {modalDate.map((tag: string) => (
                   <div
                     key={tag}
