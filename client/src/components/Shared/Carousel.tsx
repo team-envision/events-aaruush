@@ -21,12 +21,11 @@ const CarouselComp = (props: CarouselProps) => {
       <Slider>
         {props.images!.map((image, index) => (
           <Slide index={index}>
-            <div className="w-full h-auto lg:h-80vh">
+            <div className="w-full h-auto lg:h-80vh text-center">
               <img
                 src={image}
                 alt={index.toString()}
-                className="max-h-full"
-                width="100%"
+                className="max-h-full mx-auto"
               />
             </div>
           </Slide>
