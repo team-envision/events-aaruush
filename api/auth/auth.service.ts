@@ -43,7 +43,7 @@ export const exchangeAuthCode = async (authCode: string): Promise<string> => {
       {
         client_id: process.env.OAUTH_CLIENTID,
         client_secret: process.env.OAUTH_CLIENTSECRET,
-        redirect_uri: process.env.OAUTH_REDIRECTURI,
+        redirect_uri: `${process.env.API_HOSTNAME}/api/v1/auth/verify`,
         grant_type: "authorization_code",
         code: authCode,
       }
