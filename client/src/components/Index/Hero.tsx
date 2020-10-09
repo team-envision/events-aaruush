@@ -73,51 +73,88 @@ const Home = () => {
             <EventRow
               layout={Layout.tile}
               label="Aaruush Days"
-              items={events.filter(
-                (event) => event.category === EventTypes.Days
-              )}
+              items={events
+                .filter(
+                  (event) =>
+                    event.category === EventTypes.Days && event.isActive
+                )
+                .concat(
+                  events.filter(
+                    (event) =>
+                      event.category === EventTypes.Days && !event.isActive
+                  )
+                )}
             />
 
             <EventRow
               layout={Layout.jumbotron}
               label="Highlights"
               items={events.filter(
-                (event) => event.category === EventTypes.Highlights
+                (event) =>
+                  event.category === EventTypes.Highlights && event.isActive
               )}
             />
             <EventRow
               layout={Layout.shot}
-              items={events.filter(
-                (event) => event.category === EventTypes.Highlights
-              )}
+              items={events
+                .filter(
+                  (event) =>
+                    event.category === EventTypes.Highlights && event.isActive
+                )
+                .concat(
+                  events.filter(
+                    (event) =>
+                      event.category === EventTypes.Highlights &&
+                      !event.isActive
+                  )
+                )}
             />
 
             <EventRow
               layout={Layout.jumbotron}
               label="Challenges"
               items={events.filter(
-                (event) => event.category === EventTypes.Challenges
+                (event) =>
+                  event.category === EventTypes.Challenges && event.isActive
               )}
             />
             <EventRow
               layout={Layout.tile}
-              items={events.filter(
-                (event) => event.category === EventTypes.Challenges
-              )}
+              items={events
+                .filter(
+                  (event) =>
+                    event.category === EventTypes.Challenges && event.isActive
+                )
+                .concat(
+                  events.filter(
+                    (event) =>
+                      event.category === EventTypes.Challenges &&
+                      !event.isActive
+                  )
+                )}
             />
 
             <EventRow
               layout={Layout.jumbotron}
               label="Workshops"
               items={events.filter(
-                (event) => event.category === EventTypes.Workshops
+                (event) =>
+                  event.category === EventTypes.Workshops && event.isActive
               )}
             />
             <EventRow
               layout={Layout.tile}
-              items={events.filter(
-                (event) => event.category === EventTypes.Workshops
-              )}
+              items={events
+                .filter(
+                  (event) =>
+                    event.category === EventTypes.Workshops && event.isActive
+                )
+                .concat(
+                  events.filter(
+                    (event) =>
+                      event.category === EventTypes.Workshops && !event.isActive
+                  )
+                )}
             />
           </>
         )}
