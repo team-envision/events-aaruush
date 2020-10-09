@@ -10,6 +10,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
     "axios": "^0.20.0",
     "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
@@ -33,8 +34,7 @@
     "start:css": "postcss src/tailwind.src.scss -o src/tailwind.scss -w",
     "build:css": "postcss src/tailwind.src.scss -o src/tailwind.scss --env production",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postinstall": "yarn build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,8 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/react-router-dom": "^5.1.5"
   }
 }

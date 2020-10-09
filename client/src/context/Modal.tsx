@@ -65,7 +65,7 @@ const ModalContextProvider = (props: any) => {
                   {isActive ? (
                     <a href={modalLink}>
                       <button className="px-6 py-4 lg:mr-10 mt-4 lg:mt-0 rounded-lg focus:outline-none text-xl font-bold bg-green-600">
-                        "Register Now !"
+                        Register Now !
                       </button>
                     </a>
                   ) : (

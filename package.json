@@ -11,10 +11,11 @@
     "start": "node ./build/app.js",
     "start:dev": "npx nodemon ./build/app.js | pino-pretty",
     "build": "npx tsc",
-    "build:client": "cd client && yarn",
+    "build:client": "cd client && yarn build",
     "build:dev": "npx tsc --watch",
     "client": "cd client && yarn start",
-    "heroku-postbuild": "yarn build && yarn build:client"
+    "postinstall": "cd client && yarn",
+    "heroku-postbuild": "yarn build:client && yarn build"
   },
   "devDependencies": {
     "@types/aws-sdk": "^2.7.0",
