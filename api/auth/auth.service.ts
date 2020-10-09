@@ -16,7 +16,7 @@ export const generateAuthUrl = async (): Promise<string> => {
   const oauth2client = new google.auth.OAuth2({
     clientId: process.env.OAUTH_CLIENTID,
     clientSecret: process.env.OAUTH_CLIENTSECRET,
-    redirectUri: process.env.OAUTH_REDIRECTURI,
+    redirectUri: `${process.env.API_HOSTNAME}/api/v1/auth/verify`,
   });
   const scopes = [
     "https://www.googleapis.com/auth/userinfo.email",
