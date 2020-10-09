@@ -25,6 +25,7 @@ export interface Item {
   description: string;
   poster: string[];
   link: string;
+  isActive: boolean;
   slug: string;
   tags?: string[];
 }

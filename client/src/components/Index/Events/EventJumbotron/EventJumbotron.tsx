@@ -16,6 +16,7 @@ const EventJumbotron = (props: Item) => {
     modalContext.setModalLink(props.link);
     modalContext.setModalDesc(props.description);
     modalContext.setIsOpen(!modalContext.isOpen);
+    modalContext.setIsActive(props.isActive);
   };
 
   return (
@@ -33,16 +34,18 @@ const EventJumbotron = (props: Item) => {
           <p className="text-base my-2">{props.description}</p>
         </div>
         <div className="flex flex-wrap w-full mt-6">
-          <a
-            href={props.link}
-            className="flex w-1/2 h-12 rounded-lg m-auto bg-baseWhite text-baseBlack"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="m-auto focus:outline-none">
-              <AiOutlineForm className="m-auto text-3xl" />
-            </button>
-          </a>
+          {props.isActive && (
+            <a
+              href={props.link}
+              className="flex w-1/2 h-12 rounded-lg m-auto bg-baseWhite text-baseBlack"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="m-auto focus:outline-none">
+                <AiOutlineForm className="m-auto text-3xl" />
+              </button>
+            </a>
+          )}
           <button
             className="flex w-5/12 h-10 rounded-lg m-auto bg-baseBlack text-baseWhite focus:outline-none shadow-jumbotronInfo"
             onClick={eventClickhandler}

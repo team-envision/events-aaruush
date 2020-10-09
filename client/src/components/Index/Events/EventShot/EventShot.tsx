@@ -16,6 +16,7 @@ const EventShot = (props: Item) => {
     modalContext.setModalLink(props.link);
     modalContext.setModalDesc(props.description);
     modalContext.setIsOpen(!modalContext.isOpen);
+    modalContext.setIsActive(props.isActive);
   };
 
   return (
@@ -30,18 +31,20 @@ const EventShot = (props: Item) => {
       <div className="w-full h-full top-0 left-0 opacity-0 absolute">
         <div className="content absolute">
           <div className="flex flex-wrap w-3/4 lg:w-7/12">
-            <a
-              href={props.link}
-              className="flex w-1/2 h-12 rounded-lg m-auto bg-baseWhite text-baseBlack"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="m-auto focus:outline-none">
-                <AiOutlineForm className="m-auto text-2xl" />
-              </button>
-            </a>
+            {props.isActive && (
+              <a
+                href={props.link}
+                className="flex w-1/2 h-12 rounded-lg m-auto bg-baseWhite text-baseBlack"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="m-auto focus:outline-none">
+                  <AiOutlineForm className="m-auto text-2xl" />
+                </button>
+              </a>
+            )}
             <button
-              className="flex w-5/12 h-10 rounded-lg m-auto bg-baseBlack text-baseWhite focus:outline-none"
+              className="flex w-5/12 h-10 rounded-lg my-auto mr-auto bg-baseBlack text-baseWhite focus:outline-none"
               onClick={eventClickhandler}
             >
               <FaInfoCircle className="m-auto text-lg" />
