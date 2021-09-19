@@ -19,37 +19,38 @@ import { errors } from "./error/error.constant";
 
 const app: Express = express();
 
-const whitelist = ["https://aaruush.org", "https://googleapis.com"];
-const corsOptions: CorsOptions = {
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (whitelist.indexOf(origin!) !== -1) {
-      callback(null, true);
-    } else {
-      callback({ ...errors.CORS_ERROR, name: "CORS_ERROR" } as ApiError);
-    }
-  },
-};
-if (process.env.NODE_ENV === "production") {
-  app.use(cors(corsOptions));
-  app.use(
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'", "'unsafe-inline'", "* https:"],
-          scriptSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "https://www.googletagmanager.com/",
-            "https://www.google-analytics.com/",
-          ],
-        },
-      },
-    })
-  );
-} else {
-  app.use(cors());
-}
+// const whitelist = ["https://aaruush.org", "https://googleapis.com"];
+
+// const corsOptions: CorsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin) return callback(null, true);
+//     if (whitelist.indexOf(origin!) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback({ ...errors.CORS_ERROR, name: "CORS_ERROR" } as ApiError);
+//     }
+//   },
+// };
+// if (process.env.NODE_ENV === "production") {
+//   app.use(cors(corsOptions));
+//   app.use(
+//     helmet({
+//       contentSecurityPolicy: {
+//         directives: {
+//           defaultSrc: ["'self'", "'unsafe-inline'", "* https:"],
+//           scriptSrc: [
+//             "'self'",
+//             "'unsafe-inline'",
+//             "https://www.googletagmanager.com/",
+//             "https://www.google-analytics.com/",
+//           ],
+//         },
+//       },
+//     })
+//   );
+// } else {
+//   app.use(cors());
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -85,9 +86,10 @@ Promise.all([
   StorageService.getInstance().initialize(),
 ])
   .then(() => {
-    app.listen(process.env.PORT, () => {
+    const port = process.env.PORT ? process.env.PORT :4200 
+    app.listen(port, () => {
       LoggerService.getInstance().log.info(
-        `Server:${process.env.NODE_ENV}-mode on Port ${process.env.PORT}`
+        `Server:${process.env.NODE_ENV}-mode on Port ${port}`
       );
     });
   })

@@ -7,7 +7,7 @@ import NotFound from "./components/NotFound/Hero";
 import { Constants } from "./constants";
 
 function App() {
-  const [isOrg, setIsOrg] = useState(false);
+  const [isOrg, setIsOrg] = useState(true);
 
   useEffect(() => {
     setIsOrg(

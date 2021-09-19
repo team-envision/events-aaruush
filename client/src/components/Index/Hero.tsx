@@ -11,12 +11,13 @@ const Home = () => {
     APIservice.get("/events")
       .then((res) => {
         setEvents(res.data.events);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
     // eslint-disable-next-line
-  }, [APIservice]);
+  }, []);
 
   return (
     <div className="flex flex-wrap">
@@ -67,7 +68,7 @@ const Home = () => {
         </div>
       </div>
       <div className="w-3/4 mx-auto mt-10">
-        {console.log(events)}
+        {/* {console.log(events)} */}
         {events.length !== 0 && (
           <>
             <EventRow
